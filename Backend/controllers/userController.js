@@ -1,11 +1,10 @@
 const User = require('../model/User');
 const {StatusCodes} = require('http-status-codes');
 const customError = require('../errors');
-const { compare } = require('bcryptjs');
-
+const {attachCookiesToResponse} = require('../utils');
 
 const getAllUsers = async (req,res) => {
-    console.log(req.user);
+    // console.log(req.user);
     const users = await User.find({role: 'user'}).select('-password');
     res.status(StatusCodes.OK).json({users});
 
@@ -24,7 +23,15 @@ const showCurrentUser = async (req,res) => {
    }
 }
 const updateUser = async (req,res) => {
-    res.send('Update current user ');
+    // res.send('Update current user ');
+    const {name , email} = req.body;
+    if(!name || !email){
+        throw new customError.BadRequestError("Please provide name and email");
+    }
+    const user =await User.findOneAndUpdate({_id: req.user.userId},{email,name},{new : true, runValidators:true});
+     const tokenUser = {name: user.name, userId: user._id, role: user.role};
+    attachCookiesToResponse({res,user: tokenUser});
+    res.status(StatusCodes.OK).json({user: tokenUser});
 }
 
 const updateUserPassword = async (req,res) => {
