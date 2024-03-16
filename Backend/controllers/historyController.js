@@ -1,26 +1,3 @@
-// const History = require('../model/History');
-// const {User} = require('../model/User')
-// const {StatusCodes} = require('http-status-codes');
-// const customError = require('../errors');
-
-// const createHistory = async (req,res)=> {
-//     const {title,body} = req.body;
-
-//     if(!title || !body){
-//         throw new customError.BadRequestError('Please provide title and body')
-//     }
-//     const history = await History.create({title,body});
-//     // User.history = history;
-
-//     res.status(StatusCodes.CREATED).json({content:history});
-
-// }
-
-// module.exports = {
-//     createHistory
-// }
-
-
 const History = require('../model/History');
 const  User  = require('../model/User');
 const { StatusCodes } = require('http-status-codes');
@@ -84,6 +61,49 @@ const getSingleHistory = async (req,res)=> {
     res.status(StatusCodes.OK).json({content: singleHistory});
 }
 
+const savedContent = async (req,res)=> {
+    const contentId = req.params.id;
+    // const user = await User.findById(req.user.userId).populate('history');
+    // const histories = user.history.map(history => history.toObject());
+    
+     // Find the history document that matches the content ID
+    //  const savedHistory = histories.find(history => {
+    //     if(history._id.toString() === contentId) {
+    //         history.saved = true;
+    //     }
+    //  });
+    const savedHistory = await History.findById({_id:contentId});
+    savedHistory.saved = true;
+    await savedHistory.save();
+     res.status(StatusCodes.OK).json({content: savedHistory});
+
+}
+
+// const savedContent = async (req, res) => {
+//     const contentId = req.params.id;
+//     try {
+//         // Find the user and populate the history array
+//         const user = await User.findById(req.user.userId).populate('history');
+        
+//         // Find the history document that matches the content ID
+//         const historyIndex = user.history.findIndex(history => history._id.toString() === contentId);
+//         if (historyIndex === -1) {
+//             throw new customError.NotFoundError('History not found')
+//         }
+
+//         // Mark the history as saved and update it in the database
+//         user.history[historyIndex].saved = true;
+//         await user.save();
+
+//         // Respond with the updated history
+//         res.status(StatusCodes.OK).json({ content: user.history[historyIndex] });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+//     }
+// }
+
+
 module.exports = {
-    createHistory,getAllHistory,getSingleHistory
+    createHistory,getAllHistory,getSingleHistory,savedContent
 };
