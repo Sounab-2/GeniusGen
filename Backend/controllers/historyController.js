@@ -36,8 +36,6 @@ const createHistory = async (req, res) => {
     try {
         // Create the history document
         const history = await History.create({ title, body });
-       
-
         // Find the user by some identifier, e.g., user ID
         const userId = req.user.userId;
         const user = await User.findById({_id : userId})
@@ -60,10 +58,32 @@ const createHistory = async (req, res) => {
     }
 };
 
-const getAllHistory = async (req,res)=> {
-    
+const getAllHistory = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId).populate('history');
+        
+        const histories = user.history.map(history => history.toObject());
+        res.status(StatusCodes.OK).json({ histories });
+    } catch (error) {
+        console.error(error);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+    }
+};
+
+const getSingleHistory = async (req,res)=> {
+    const user = await User.findById(req.user.userId).populate('history');
+    const histories = user.history.map(history => history.toObject());
+    const contentId = req.params.id;
+     // Find the history document that matches the content ID
+     const singleHistory = histories.find(history => history._id.toString() === contentId);
+     
+     if (!singleHistory) {
+        throw new customError.NotFoundError('History not found');
+    }
+
+    res.status(StatusCodes.OK).json({content: singleHistory});
 }
 
 module.exports = {
-    createHistory
+    createHistory,getAllHistory,getSingleHistory
 };

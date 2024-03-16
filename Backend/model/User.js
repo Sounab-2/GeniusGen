@@ -40,15 +40,22 @@ const UserSchema = new mongoose.Schema({
 // UserSchema.path('history').default([]);
 
 // Hash the Password
+// UserSchema.pre('save', async function(next) {
+//     try {
+//         const salt = await bcrypt.genSalt(10);
+//         this.password = await bcrypt.hash(this.password, salt);
+//         next();
+//     } catch (error) {
+//         next(error);
+//     }
+// });
+
 UserSchema.pre('save', async function(next) {
-    try {
-        const salt = await bcrypt.genSalt(10);
+    if(!this.isModified('password')) return;    
+    const salt = await bcrypt.genSalt(10);
         this.password = await bcrypt.hash(this.password, salt);
-        next();
-    } catch (error) {
-        next(error);
-    }
 });
+
 
 UserSchema.methods.comparePassword = async function (userPassword) {
     const isMatch = await bcrypt.compare(userPassword, this.password);
