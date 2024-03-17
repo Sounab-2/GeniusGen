@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-ff {
+  font-family: "ITC Avant Garde Gothic Bold", sans-serif;
+}
+.bg-green-1000{
+  background: #497e2d4d;
+
+}
+.bg-gray-1000{
+  background: #161619;
+}
