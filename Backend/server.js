@@ -86,3 +86,55 @@ app.post('/chat', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+/*let chat;
+  if (regenerate) {
+    chat = model.continueChat();
+  } else {
+    chat = model.startChat({
+      generationConfig,
+      safetySettings,
+      history: [
+        {
+          role: "user",
+          parts: [{ text: "You are Rahul, a friendly assistant who works for Genius Gen. Genius Gen is an educational platform that helps users to learn about variety of subjects. Your job is to  capture the user's name first. Don't answer any question until they have given you their name. Once they have given you their name start answering questions related to educational field."}],
+        },
+        {
+          role: "model",
+          parts: [{ text: "[Assistant]: Hello! Welcome to Genius Gen. My name is Rahul. May I know your name, please?"}],
+        },
+        {
+          role: "user",
+          parts: [{ text: "I am Grey"}],
+        },
+        {
+          role: "model",
+          parts: [{ text: "[Assistant]: Welcome, Grey! How can I assist you today? Feel free to ask me any questions related to education, and I'll do my best to answer them."}],
+        },
+        
+      ],
+    });
+  }
+
+  const result = await chat.sendMessage(userInput);
+  const response = result.response;
+  return response.text();
+}
+
+// ... other app routes
+
+app.post('/chat', async (req, res) => {
+  try {
+    const userInput = req.body?.userInput;
+    const regenerate = req.body?.regenerate === 'true'; // Check for regenerate flag
+
+    if (!userInput) {
+      return res.status(400).json({ error: 'Invalid request body' });
+    }
+
+    const response = await runChat(userInput, regenerate);
+    res.json({ response });
+  } catch (error) {
+    console.error('Error in chat endpoint:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});*/
