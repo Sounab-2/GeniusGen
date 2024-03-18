@@ -29,7 +29,7 @@ const Home = () => {
 
         <div className=' text-6xl left-20 absolute top-48 text-white font-rubik-doodle-shadow flex flex-col gap-6 w-2/4 justify-center'>
           <h1 className=' text-6xl text-white font-rubik-doodle-shadow font-extrabold'>
-            Genious Gen
+            Genius Gen
           </h1>
           <p className=' text-lg  text-white font-rubik-doodle-shadown w-4/5 font-bold'>
             Welcome to GeniusGen, your ultimate destination for intellectual growth and fun learning! Our mission is to empower minds through a fusion of enlightening blog content and captivating quizzes.
