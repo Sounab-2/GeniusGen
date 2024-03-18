@@ -73,7 +73,7 @@ export default function Footer() {
                     <span className="text-sm text-white sm:text-center">
                         © 2024
                         <Link to="#" className="hover:underline">
-                            GeniousGen
+                            GeniusGen
                         </Link>
                         . All Rights Reserved.
                     </span>
