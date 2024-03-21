@@ -14,6 +14,7 @@ const connectDB = require('./db/connect');
 const authRouter = require('./routes/authRoute');
 const userRouter = require('./routes/userRoute');
 const historyRouter = require('./routes/historyRoute');
+const aiRouter =  require('./routes/aiRoute');
 
 //middlewares
 const notFoundMiddleware = require('./middleware/not-found');
@@ -34,7 +35,8 @@ app.get('/api/v1', (req,res,next)=>{
 app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/users',userRouter);
 app.use('/api/v1/history',historyRouter);
-
+app.use('/api/v1/search',aiRouter);
+app.use('/api/v1/quiz',aiRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
