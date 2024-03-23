@@ -13,6 +13,7 @@ import Signin from './Components/SignIn/Signin.jsx'
 import Signup from './Components/SignUp/Signup.jsx'
 import Product from './Pages/Product/Product.jsx';
 import Explore from './Pages/Explore/Explore.jsx';
+import Error from './Pages/Error/Error.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='product' element={<Product />} />
       <Route path='/signin' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/error' element={<Error />} />
     </>
     // we have to add this fregments otherwise this will not work
   )

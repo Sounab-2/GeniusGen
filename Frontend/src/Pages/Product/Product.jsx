@@ -156,7 +156,7 @@ const Product = () => {
           </div>
 
           <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3">
-            <div className=' h-auto w-96  flex items-center justify-between p-8'>
+            <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
               <button>
 
               </button>
