@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { quiz } from './QuizStore';
+import GaugeComponent from 'react-gauge-component'
+import { Link } from 'react-router-dom'
+
+//Component with default values
+
 
 const Quiz = () => {
     const [activeQuestion, setActiveQuestion] = useState(0);
@@ -53,7 +58,7 @@ const Quiz = () => {
                         <img
                             src='./src/assets/shape-4.png'
                             alt="Background"
-                            className="absolute right-0 h-2/3 w-64  rotate-180"
+                            className="absolute right-0 h-2/3 w-64  rotate-180 hidden md:block"
                         />
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-white text-4xl font-semibold">
@@ -94,9 +99,65 @@ const Quiz = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="">
-                        <h3 className="text-2xl font-extrabold text-white  mb-4">Well done! You got {result.correctAnswers} out of {questions.length}  right. Keep up the good work!</h3>
-                      
+                    <div className="flex flex-col justify-center items-center gap-6 bg-gray-800 rounded-lg p-14 ">
+                        <div  className=' bg-gray-700 h-72 w-72  flex items-center justify-center rounded-full'>
+                        <GaugeComponent
+                             // Adjust width and height to make it bigger
+                            
+                            arc={{
+                                subArcs: [
+                                    {
+                                        limit: 20,
+                                        color: '#EA4228',
+                                        showTick: true
+                                    },
+                                    {
+                                        limit: 40,
+                                        color: '#F58B19',
+                                        showTick: true
+                                    },
+                                    {
+                                        limit: 60,
+                                        color: '#F5CD19',
+                                        showTick: true
+                                    },
+                                    {
+                                        limit: 100,
+                                        color: '#5BE12C',
+                                        showTick: true
+                                    },
+                                ]
+                            }}
+                            value={(result.correctAnswers / questions.length) * 100} // Calculate percentage
+                            animate={true}
+                        />
+                        </div>
+                        <h3 className="text-2xl font-extrabold text-white mb-4">
+                            {result.correctAnswers >= 5 ? (
+                                `Well done! You got ${result.correctAnswers} out of ${questions.length} right. Keep up the good work!`
+                            ) : (
+                                `Try harder next time. You got ${result.correctAnswers} out of ${questions.length} correct.`
+                            )}
+                        </h3>
+
+                        <h3 className="text-2xl font-extrabold text-yellow-600 mb-4">
+                           {`Your Total Score : ${result.correctAnswers}/${questions.length}`}
+                        </h3>
+
+
+
+                        <Link
+                            to="/product"
+                            className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                        >
+                            {result.correctAnswers >= 5 ? (
+                                'Prepare Another topic'
+                            ) : (
+                                'Prepare Again'
+                            )}
+
+                        </Link>
+
                     </div>
                 )}
             </div>
