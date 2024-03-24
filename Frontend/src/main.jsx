@@ -14,6 +14,7 @@ import Signup from './Components/SignUp/Signup.jsx'
 import Product from './Pages/Product/Product.jsx';
 import Explore from './Pages/Explore/Explore.jsx';
 import Error from './Pages/Error/Error.jsx';
+import Quiz from './Pages/Quiz/Quiz.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path='/signin' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/error' element={<Error />} />
+      <Route path='/quiz' element={<Quiz />} />
     </>
     // we have to add this fregments otherwise this will not work
   )
