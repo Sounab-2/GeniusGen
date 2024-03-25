@@ -21,13 +21,26 @@ const aiRouter =  require('./routes/aiRoute');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
-// app.use(cors({
-//     origin: 'http://localhost:5173',
-//     credentials: true
-// }));
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+// Handle preflight requests for all routes
+app.options('*', cors());
 
+// Custom middleware to ensure 'Access-Control-Allow-Credentials' header is set
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
-app.use(cors());
+// Add your routes and other middleware here...
+
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
+// app.use(cors());
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
