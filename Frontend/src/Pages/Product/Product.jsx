@@ -13,27 +13,24 @@ const Product = () => {
   const navigate = useNavigate(); // Initialize navigate
   console.log(user);
   useEffect(() => {
-    // Redirect to '/signin' if user is not authenticated
     if (!user) {
       navigate('/signin');
     }
     
-  }, [ navigate]); // Call navigate when user or navigate changes
+  }, [ navigate]);
 
-  // If user is not authenticated, useEffect will redirect before rendering
   if (!user) {
-    return null; // Return null to avoid rendering anything else
+    return null; 
   }
-  const fetchData = async () => {
-    try {
-      const text = await getText(); // Call getText function from aiController.js
-      setGeneratedText(text); // Set the generated text to the state
-    } catch (error) {
-      console.error('Error fetching text:', error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+    
+  //   } catch (error) {
+  //     console.error('Error fetching text:', error);
+  //   }
+  // };
 
-  fetchData();
+  // fetchData();
   return (
     <div>
 

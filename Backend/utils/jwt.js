@@ -12,9 +12,10 @@ const attachCookiesToResponse = ({res,user}) => {
     const oneDay = 24 * 60 * 60 * 1000;
     res.cookie ('token',token, {
         httpOnly: true,
+        sameSite: 'None',
         expires : new Date(Date.now() + oneDay),
         signed: true,
-        secure: process.env.NODE_ENV === 'Production',
+        secure: true,
     })
 }
 
