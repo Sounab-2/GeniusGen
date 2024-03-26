@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPlus, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faBars, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import Avataricon from '../Avataricon/Avataricon';
+import { useSelector } from 'react-redux';
+
 
 export default function Header() {
+    const user = useSelector(state => state.user);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+    
 
     const toggleMobileNav = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
     };
+   
 
     return (
         <header className="sticky z-50 top-0 flex flex-col">
@@ -22,30 +28,35 @@ export default function Header() {
                         />
                     </Link>
                     <span onClick={toggleMobileNav}
-                    className=' absolute left-5'>
+                        className=' absolute left-5'>
                         <FontAwesomeIcon icon={faBars} className="md:hidden" />
                     </span>
-                    <div className="flex items-center lg:order-2">
+                    {user ? (
+                        <div className="flex items-center lg:order-2">
+                            <Avataricon/>
+                        </div>
 
-                        <Link
-                            to="/signin"
-                            className="text-gray-800 bg-gray-50 hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                        >
-                            <div className=' w-16 justify-between flex'>
-                                <span><FontAwesomeIcon icon={faUserPlus} /></span>
-                                <h3>Log in</h3>
-                            </div>
 
-                        </Link>
-                        <Link
-                            to="/signup"
-                            className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                        >
-                            <h3>Sign Up</h3>
+                    ) : (
+                        <div className="flex items-center lg:order-2">
+                            <Link
+                                to="/signin"
+                                className="text-gray-800 bg-gray-50 hover:bg-gray-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            >
+                                <div className='w-16 justify-between flex'>
+                                    <span><FontAwesomeIcon icon={faUserPlus} /></span>
+                                    <h3>Log in</h3>
+                                </div>
+                            </Link>
+                            <Link
+                                to="/signup"
+                                className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            >
+                                <h3>Sign Up</h3>
+                            </Link>
+                        </div>
+                    )}
 
-                        </Link>
-
-                    </div>
                     <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
                         <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>

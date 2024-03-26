@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Card from '../../Components/Card/Card';
 import Feauters from '../../Components/Feauters/Feauters';
 import ContactUs from '../../Components/ContactUs/ContactUs';
-
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+
  
   return (
-
+  
     <div className="bg-black min-h-screen relative">
       <div className=' h-screen'>
         <img
