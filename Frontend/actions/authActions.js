@@ -19,8 +19,8 @@
         try {
           const response = await axiosInstance.post('/api/v1/auth/login', userData);
           dispatch(setUser(response.data.user));
-          navigate('/product');
           console.log("Logged in successfully");
+          navigate('/product');
 
         } catch (error) {
           console.log(error);

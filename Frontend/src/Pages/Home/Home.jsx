@@ -5,8 +5,7 @@ import ContactUs from '../../Components/ContactUs/ContactUs';
 
 
 const Home = () => {
-
-
+ 
   return (
 
     <div className="bg-black min-h-screen relative">
@@ -22,10 +21,10 @@ const Home = () => {
           alt="Background"
           className="absolute right-0 h-1/3  rotate-180"
         />
-        <div class='absolute  md:right-36 sm:right-36 right-6 top-96 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0'>
+        {/* <div class='absolute  md:right-36 sm:right-36 right-6 top-96 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0'>
           <iframe width="100%" height="100%" src="https://youtu.be/QM-tDK7lurA?si=8MWI47pC1M7aB-FO" frameborder="0" allowfullscreen></iframe>
 
-        </div>
+        </div> */}
 
         <div className=' text-6xl md:left-20 sm:left-20 left-7 absolute md:top-48 text-white font-rubik-doodle-shadow flex flex-col gap-6 md:w-2/4 justify-center sm:top-5 sm:w-4/5'>
           <h1 className=' md:text-6xl text-5xl text-white font-rubik-doodle-shadow font-extrabold'>
