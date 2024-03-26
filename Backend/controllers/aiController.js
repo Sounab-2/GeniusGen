@@ -71,5 +71,6 @@ const searchTopic = async (req, res) => {
 // }
 
 module.exports = {
-    searchTopic,getPrompt
+    searchTopic,getPrompt,
+   
 }

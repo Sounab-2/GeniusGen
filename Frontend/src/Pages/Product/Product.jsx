@@ -4,8 +4,11 @@ import SearchBox from '../../Components/SearchBox/SearchBox';
 import History from '../../Components/Historybox/History';
 import { useSelector } from 'react-redux';
 import Avataricon from '../../Components/Avataricon/Avataricon';
+import { useState } from 'react';
+//import { getText } from '../../../Backend/controllers/aiController';
 
 const Product = () => {
+  const [generatedText, setGeneratedText] = useState('');
   const user = useSelector(state => state.user);
   const navigate = useNavigate(); // Initialize navigate
   console.log(user);
@@ -14,12 +17,23 @@ const Product = () => {
     if (!user) {
       navigate('/signin');
     }
+    
   }, [ navigate]); // Call navigate when user or navigate changes
 
   // If user is not authenticated, useEffect will redirect before rendering
   if (!user) {
     return null; // Return null to avoid rendering anything else
   }
+  const fetchData = async () => {
+    try {
+      const text = await getText(); // Call getText function from aiController.js
+      setGeneratedText(text); // Set the generated text to the state
+    } catch (error) {
+      console.error('Error fetching text:', error);
+    }
+  };
+
+  fetchData();
   return (
     <div>
 
@@ -129,7 +143,7 @@ const Product = () => {
           </div>
           <div class="flex items-center justify-center h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
             <p class="text-2xl text-gray-400 dark:text-gray-500">
-              Actual search answer
+            {generatedText}
             </p>
           </div>
 
