@@ -1,9 +1,24 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React,{useEffect} from 'react';
+import { Link, NavLink,useNavigate} from 'react-router-dom';
 import SearchBox from '../../Components/SearchBox/SearchBox';
 import History from '../../Components/Historybox/History';
+import { useSelector } from 'react-redux';
 
 const Product = () => {
+  const user = useSelector(state => state.user);
+  const navigate = useNavigate(); // Initialize navigate
+  console.log(user);
+  useEffect(() => {
+    // Redirect to '/signin' if user is not authenticated
+    if (!user) {
+      navigate('/signin');
+    }
+  }, [user, navigate]); // Call navigate when user or navigate changes
+
+  // If user is not authenticated, useEffect will redirect before rendering
+  if (!user) {
+    return null; // Return null to avoid rendering anything else
+  }
   return (
     <div>
 
