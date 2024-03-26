@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {  faSignOut } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
@@ -9,14 +9,14 @@ const Avataricon = () => {
     const user = useSelector(state => state.user);
     const [isLogOutOpen, setIsLogoutOpen] = useState(false);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const toggleLogout = () => {
         setIsLogoutOpen(!isLogOutOpen);
     }
 
     const handleLogout = async () => {
         try {
-            await dispatch(logoutUser());
+            await dispatch(logoutUser(navigate));
             setIsLogoutOpen(false); // Close the logout modal after logout
         } catch (error) {
             console.error(error);

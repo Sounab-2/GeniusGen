@@ -14,7 +14,7 @@ const Product = () => {
     if (!user) {
       navigate('/signin');
     }
-  }, [user, navigate]); // Call navigate when user or navigate changes
+  }, [ navigate]); // Call navigate when user or navigate changes
 
   // If user is not authenticated, useEffect will redirect before rendering
   if (!user) {
@@ -25,23 +25,6 @@ const Product = () => {
 
 
       <nav class="fixed flex items-center justify-between top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700 px-3 py-3 lg:px-5 lg:pl-3">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-           
-
             <div className=' w-1/2'>
               <SearchBox />
             </div>

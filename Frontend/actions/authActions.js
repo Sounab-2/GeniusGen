@@ -27,10 +27,11 @@ export const login = (userData, navigate) => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => async (dispatch) => {
+export const logoutUser = (navigate) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     await axiosInstance.get('/api/v1/auth/logout');
+    navigate('/');
     dispatch(logout());
   } catch (error) {
     console.log(error);
