@@ -1,15 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {  faSignOut } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
+import { logoutUser } from '../../../actions/authActions';
 
 const Avataricon = () => {
     const user = useSelector(state => state.user);
     const [isLogOutOpen, setIsLogoutOpen] = useState(false);
+    const dispatch = useDispatch();
+
     const toggleLogout = () => {
         setIsLogoutOpen(!isLogOutOpen);
     }
+
+    const handleLogout = async () => {
+        try {
+            await dispatch(logoutUser());
+            setIsLogoutOpen(false); // Close the logout modal after logout
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className="text-white mr-4 flex items-center gap-4 relative">
             <Link onClick={toggleLogout}>
@@ -26,16 +39,12 @@ const Avataricon = () => {
                 className={`${isLogOutOpen ? 'block' : 'hidden'
                     }  bg-gray-800 absolute md:top-14  h-14 flex items-center justify-center rounded-md rounded-s-none md:left-7 sm:right-3 md:right-0 sm:top-10  w-48 py-2 px-4 right-3 top-10`}
             >
-                {/* Add logout button or any other user-related actions */}
-                <button className=' w-full' onClick={toggleLogout}>
-
-                    <span className=' flex gap-3 items-center justify-center'>
+                {/* Logout button */}
+                <button className='w-full' onClick={handleLogout}>
+                    <span className='flex gap-3 items-center justify-center'>
                         Logout
                         <FontAwesomeIcon icon={faSignOut} className="" />
                     </span>
-
-
-
                 </button>
             </div>
         </div>
