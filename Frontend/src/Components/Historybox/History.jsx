@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { axiosInstance } from '../../../utils/index';
+import { useSelector ,useDispatch} from "react-redux";
+import {setGeneratedText} from "../../../features/userSlice";
+
 
 const History = (props) => {
-    const histories = props.histories || []; // Provide a default value for histories if it's undefined
+    const histories = props.histories || []; 
     const [activeHistory, setActiveHistory] = useState(null);
+    const generatedText = useSelector(state => state.generatedText);
+    const dispatch = useDispatch();
+    const handleClick = async (historyId) => {
+        setActiveHistory(activeHistory === historyId ? null : historyId); 
+        try {
+            const response = await axiosInstance.get(`/api/v1/history/${historyId}`);
+            dispatch(setGeneratedText(response.data.content.body));
+            console.log(generatedText)
 
-    const handleClick = (historyId) => {
-        setActiveHistory(activeHistory === historyId ? null : historyId); // Toggle active state
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
