@@ -33,12 +33,10 @@ const Product = () => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get('/api/v1/history/getAllHistory');
-        //console.log(response.data.histories); 
+      
         histories=response.data.histories;
         console.log(histories);
-        //const title = HistoryData.map(history => history.title);
-        //setHistory(HistoryData);
-        //setTitles(title);
+        
       } catch (error) {
         console.log(error); 
       }
@@ -119,7 +117,9 @@ const Product = () => {
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-black">
       
           <ul class="space-y-2 font-medium">
-            <History histories = {histories}/>
+          {histories && histories.map(history => (
+        <History key={history._id} title={history.title} />
+          ))}
           </ul>
         </div>
       </aside>
