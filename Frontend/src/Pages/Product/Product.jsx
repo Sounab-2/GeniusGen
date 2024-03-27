@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux';
 import Avataricon from '../../Components/Avataricon/Avataricon';
 import { useState } from 'react';
 import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
+import { axiosInstance } from '../../../utils';
 
 
 const Product = () => {
   const user = useSelector(state => state.user);
+  const text = useSelector(state => state.generatedText);
   const navigate = useNavigate(); // Initialize navigate
   console.log(user);
   useEffect(() => {
@@ -17,17 +19,28 @@ const Product = () => {
       navigate('/signin');
     }
     
-  }, [ navigate]);
+  }, [ user]);
 
-  if (!user) {
-    return null; 
-  }
+  // if (!user) {
+  //   return null; 
+  // }
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const histories = await axiosInstance.get('/api/v1/history/getAllHistory');
+          console.log(histories.data.histories); 
+        } catch (error) {
+          console.log(error); 
+        }
+      };
+  
+      fetchData(); 
+    },[text]); 
   
 
   return (
     <div>
-
-
       <nav class="fixed flex items-center justify-between top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700 px-3 py-3 lg:px-5 lg:pl-3">
             <div className=' w-1/2'>
               <SearchBox />
@@ -96,7 +109,6 @@ const Product = () => {
       <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-black dark:border-gray-700" aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-black">
           <ul class="space-y-2 font-medium">
-
             <History />
           </ul>
         </div>
