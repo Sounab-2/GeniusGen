@@ -2,14 +2,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link,useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {  faSignOut } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { logoutUser } from '../../../actions/authActions';
+
 
 const Avataricon = () => {
     const user = useSelector(state => state.user);
     const [isLogOutOpen, setIsLogoutOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    useEffect(() => {
+        if (!user) {
+          navigate('/signin');
+        }
+      }, [user]);
     const toggleLogout = () => {
         setIsLogoutOpen(!isLogOutOpen);
     }
@@ -32,7 +38,8 @@ const Avataricon = () => {
                     alt="avatar"
                 />
             </Link>
-            <span className="font-bold text-lg md:block hidden">{user.name}</span>
+            <span className="font-bold text-lg md:block hidden">{user && user.name}</span>
+
 
             {/* Toggle Logout Box */}
             <div
