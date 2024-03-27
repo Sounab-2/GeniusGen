@@ -13,6 +13,9 @@ const Product = () => {
   const user = useSelector(state => state.user);
   const text = useSelector(state => state.generatedText);
   const navigate = useNavigate(); // Initialize navigate
+  //const [history, setHistory] = useState([]);
+  //const [titles, setTitles] = useState([]);
+  let histories;
   console.log(user);
   useEffect(() => {
     if (!user) {
@@ -29,8 +32,13 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const histories = await axiosInstance.get('/api/v1/history/getAllHistory');
-        console.log(histories.data.histories); 
+        const response = await axiosInstance.get('/api/v1/history/getAllHistory');
+        //console.log(response.data.histories); 
+        histories=response.data.histories;
+        console.log(histories);
+        //const title = HistoryData.map(history => history.title);
+        //setHistory(HistoryData);
+        //setTitles(title);
       } catch (error) {
         console.log(error); 
       }
@@ -38,7 +46,6 @@ const Product = () => {
 
     fetchData(); 
   },[text]); 
-
   return (
     <div>
 
@@ -110,9 +117,9 @@ const Product = () => {
 
       <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-black dark:border-gray-700" aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-black">
+      
           <ul class="space-y-2 font-medium">
-
-            <History />
+            <History histories = {histories}/>
           </ul>
         </div>
       </aside>
@@ -173,6 +180,7 @@ const Product = () => {
 }
 
 export default Product;
+//export { history };
 
 
 
