@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   user: null,
   isLoading: false,
+  generatedText: ''
 };
 
 const userSlice = createSlice({
@@ -20,8 +21,11 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
-  },
-});
+    setGeneratedText: (state, action) => {
+      state.generatedText = action.payload;
+    }
+  } 
+}); 
 
-export const { setUser, setLoading,logout } = userSlice.actions;
+export const { setUser, setLoading, logout, setGeneratedText } = userSlice.actions;
 export default userSlice.reducer;

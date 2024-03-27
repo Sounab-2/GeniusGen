@@ -1,4 +1,4 @@
-import { setLoading, setUser, logout } from '../features/userSlice';
+import { setLoading, setUser, logout, setGeneratedText } from '../features/userSlice';
 import { axiosInstance } from '../utils/index';
 
 export const register = (userData, navigate) => async (dispatch) => {
@@ -31,11 +31,24 @@ export const logoutUser = (navigate) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     await axiosInstance.get('/api/v1/auth/logout');
-    navigate('/');
+    // navigate('/'); 
     dispatch(logout());
   } catch (error) {
     console.log(error);
   } finally {
     dispatch(setLoading(false)); // Set loading to false after operation completes
+  }
+};
+
+export const generateText = (textInput) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await axiosInstance.post(`/api/v1/search?Topic=${textInput}`);
+    dispatch(setGeneratedText(response.data.text));
+    console.log(response.data.text);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(setLoading(false)); 
   }
 };

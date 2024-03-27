@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { axiosInstance } from '../../../utils';
+import { generateText } from '../../../actions/authActions';
+import { useDispatch } from 'react-redux';
 
 const SearchBox = () => {
     const [textInput, setTextInput] = useState('');
 
+    const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(textInput);
-            const response = await axiosInstance.post(`/api/v1/search?Topic=${textInput}`);
-            console.log(response);
+            await dispatch(generateText(textInput));
         } catch (error) {
             console.error('Error sending text:', error);
         }

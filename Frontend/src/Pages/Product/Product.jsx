@@ -5,10 +5,10 @@ import History from '../../Components/Historybox/History';
 import { useSelector } from 'react-redux';
 import Avataricon from '../../Components/Avataricon/Avataricon';
 import { useState } from 'react';
-//import { getText } from '../../../Backend/controllers/aiController';
+import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
+
 
 const Product = () => {
-  const [generatedText, setGeneratedText] = useState('');
   const user = useSelector(state => state.user);
   const navigate = useNavigate(); // Initialize navigate
   console.log(user);
@@ -22,15 +22,8 @@ const Product = () => {
   if (!user) {
     return null; 
   }
-  // const fetchData = async () => {
-  //   try {
-    
-  //   } catch (error) {
-  //     console.error('Error fetching text:', error);
-  //   }
-  // };
+  
 
-  // fetchData();
   return (
     <div>
 
@@ -105,14 +98,6 @@ const Product = () => {
           <ul class="space-y-2 font-medium">
 
             <History />
-            <History />
-            <History />
-            <History />
-            <History />
-            <History />
-            <History />
-            <History />
-            <History />
           </ul>
         </div>
       </aside>
@@ -124,23 +109,23 @@ const Product = () => {
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
               <p class="text-2xl text-gray-400 dark:text-gray-500">
 
-                Recomandation 1
+                Recomendation 1
               </p>
             </div>
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
               <p class="text-2xl text-gray-400 dark:text-gray-500">
-                Recomandation 2
+                Recomendation 2
               </p>
             </div>
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
               <p class="text-2xl text-gray-400 dark:text-gray-500">
-                Recomandation 3
+                Recommendation 3
               </p>
             </div>
           </div>
           <div class="flex items-center justify-center h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
             <p class="text-2xl text-gray-400 dark:text-gray-500">
-            {generatedText}
+              <MarkdownComponent />
             </p>
           </div>
 
@@ -173,3 +158,10 @@ const Product = () => {
 }
 
 export default Product;
+
+
+
+
+
+
+
