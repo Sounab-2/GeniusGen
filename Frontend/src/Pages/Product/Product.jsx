@@ -6,10 +6,12 @@ import { useSelector } from 'react-redux';
 import Avataricon from '../../Components/Avataricon/Avataricon';
 import { useState } from 'react';
 import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
+import { axiosInstance } from '../../../utils';
 
 
 const Product = () => {
   const user = useSelector(state => state.user);
+  const text = useSelector(state => state.generatedText);
   const navigate = useNavigate(); // Initialize navigate
   console.log(user);
   useEffect(() => {
@@ -17,12 +19,25 @@ const Product = () => {
       navigate('/signin');
     }
     
-  }, [ navigate]);
+  }, [ user]);
 
   if (!user) {
     return null; 
   }
   
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const histories = await axiosInstance.get('/api/v1/history/getAllHistory');
+        console.log(histories.data.histories); 
+      } catch (error) {
+        console.log(error); 
+      }
+    };
+
+    fetchData(); 
+  },[text]); 
 
   return (
     <div>
