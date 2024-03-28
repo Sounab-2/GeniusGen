@@ -58,7 +58,7 @@ export const generateQuiz = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     const response = await axiosInstance.get(`/api/v1/quiz`);
-    console.log(response.response.data);
+    console.log(response.data);
     // dispatch(setQuiz(response));
   } catch (error) {
     console.log(error);
