@@ -28,17 +28,17 @@ const Product = () => {
         const response = await axiosInstance.get('/api/v1/history/getAllHistory');
         setHistories(response.data.histories); // Set histories state after fetching data
       } catch (error) {
-        console.log(error); 
+        console.log(error);
       }
     };
 
-    fetchData(); 
-  }, [text]); 
+    fetchData();
+  }, [text]);
 
   // Render the History component only when histories array is not empty
   return (
-    <div>
-      <nav class="fixed flex items-center justify-between top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700 px-3 py-3 lg:px-5 lg:pl-3">
+    <div className=' overflow-hidden'>
+      <nav class="fixed flex items-center justify-between   top-0 z-50 md:w-full min-w-full overflow-hidden bg-white border-b border-gray-200 dark:bg-black dark:border-gray-700 px-3 py-3 lg:px-5 lg:pl-3">
         <div className=' w-1/2'>
           <SearchBox />
         </div>
@@ -47,60 +47,60 @@ const Product = () => {
           className="hidden justify-between items-center w-full lg:flex lg:w-auto "
           id="mobile-menu-2"
         >
-         <nav>
-           <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
-                        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                            <li>
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
-                                    }
-                                    activeClassName="text-primary-1250"
-                                >
-                                    Home
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/about"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
-                                    }
-                                >
-                                    Features
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/product"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
-                                    }
-                                    activeClassName="text-primary-1250"
-                                >
-                                    Get Started
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/contactUs"
-                                    className={({ isActive }) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
-                                    }
-                                    activeClassName="text-primary-1250"
-                                >
-                                    Contact Us
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </div>
-         </nav>
+          <nav>
+            <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                <li>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                    }
+                    activeClassName="text-primary-1250"
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                    }
+                  >
+                    Features
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/product"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                    }
+                    activeClassName="text-primary-1250"
+                  >
+                    Get Started
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/contactUs"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                    }
+                    activeClassName="text-primary-1250"
+                  >
+                    Contact Us
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
 
         <div class="flex items-center justify-center">
-          <div class="flex items-center">
-            <Avataricon/>
+          <div class="flex items-center z-30 relative">
+          <Avataricon/>
           </div>
         </div>
       </nav>
@@ -114,21 +114,17 @@ const Product = () => {
         </div>
       </aside>
 
-      <div class="p-4 sm:ml-64 bg-black min-h-screen w-fit">
-        <div class="p-4 b  rounded-lg dark:border-gray-700 mt-14">
-          
-          <div class="flex text-2xl font-bold p-12 w-fit text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            
-              <MarkdownComponent />
-          
+      <div className="sm:ml-64 bg-black min-h-screen md:p-9 p-4 relative -z-10 ">
+
+        <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-16 md:min-w-fit w-full ">
+          <MarkdownComponent />
+        </div>
+        <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+          <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
+            {/* Buttons */}
           </div>
-          <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3">
-            <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
-              {/* Buttons */}
-            </div>
-            <div className=' h-full w-auto  flex items-center justify-center'>
-              <Link to="/quiz" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12">Test your knowledge with a Quiz</Link>
-            </div>
+          <div className=' h-full w-auto  flex items-center justify-center'>
+            <Link to="/quiz" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12">Test your knowledge with a Quiz</Link>
           </div>
         </div>
       </div>

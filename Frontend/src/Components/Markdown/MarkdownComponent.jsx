@@ -23,7 +23,7 @@ const MarkdownViewer = () => {
         </p>
       );
     },
-    pre: ({ children }) => <pre className="bg-black w-auto rounded-lg text-green-700 p-10">{children}</pre>,
+    pre: ({ children }) => <pre className="bg-black flex flex-wrap md:text-lg text-xs rounded-lg text-green-700 p-3 text-left md:p-10 overflow-x-auto">{children}</pre>,
     
   };
   
