@@ -31,7 +31,7 @@ const searchTopic = async (req, res) => {
         // console.log(prompt);
         getPrompt(prompt);
         const modifiedPrompt = `Check if the given ${prompt} is directly related to programming or computer science.
-        If the ${prompt} is not related to programming or computer science, provide a JSON object message indicating that the topic is not related to programming or computer science and suggest searching for related topics in computer science.
+        If the ${prompt} is not directly related to programming or computer science, provide null.
         Otherwise, generate an educational piece on ${prompt} in programming/computer science.
         Explain its definition, fundamental concepts, and its relevance in the field.
         Provide examples to illustrate real-world applications and discuss common operations, algorithms, or techniques associated with ${prompt}.
@@ -39,12 +39,6 @@ const searchTopic = async (req, res) => {
         Include detailed explanations, code snippets (default in C language), and practical examples to enhance understanding.
         Conclude with recommendations for further study or related topics to explore.
         Ensure the content is accessible and informative for learners at various levels of expertise.
-        structure of json object will be like this:
-        const isRelatedMessage = {
-            related: false/true,
-            message: The given prompt is not related to programming or computer science. Please search for related topics in computer science.,
-            suggestions: {"Data Structure","Machine Learning"}
-        }
         `;
     
         // Use streaming with text-only input
