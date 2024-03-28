@@ -30,7 +30,7 @@ const searchTopic = async (req, res) => {
         const prompt = req.query.Topic; // Access topic from query parameters
         // console.log(prompt);
         getPrompt(prompt);
-        const modifiedPrompt = `Check if the given ${prompt} is directly related to programming or computer science.
+        const modifiedPrompt = `Check if the given ${prompt} is directly related to programming or computer science but don't write it is related to programming or computer science in the response.
         If the ${prompt} is not directly related to programming or computer science, provide null.
         Otherwise, generate an educational piece on ${prompt} in programming/computer science.
         Explain its definition, fundamental concepts, and its relevance in the field.
