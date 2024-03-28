@@ -40,6 +40,7 @@ const setQuiz = async () => {
         Check that all opening curly braces { have a corresponding closing curly brace }.
         Verify that strings are properly enclosed in double quotation marks.
         Don't give any kind of signs or spaces only the content and don't need to add any question number. Structly follow the demo of the response given.
+        Strictly give 4 choices for each question
                   A demo of response is given below:
 
                   questions: [
