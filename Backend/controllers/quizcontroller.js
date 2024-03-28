@@ -41,19 +41,18 @@ const setQuiz = async () => {
         Verify that strings are properly enclosed in double quotation marks.
         Don't give any kind of signs or spaces only the content
                   A demo of response is given below:
-                  {"MCQs": [
-                      {
-                        "question": "What is a linked list in data structures?",
-                        "options": {
-                          "A": "A linear data structure that stores data in a sequential manner",
-                          "B": "A non-linear data structure that stores data in a hierarchical manner",
-                          "C": "A dynamic data structure that stores data in a non-sequential manner",
-                          "D": "A static data structure that stores data in a fixed size array"
-                        },
-                        "answer": "C"
-                      },
-                    ]
-                  }
+                  questions: [
+                    {
+                      question: 'Which function is used to serialize an object into a JSON string in Javascript?',
+                      choices: ['stringify()', 'parse()', 'convert()', 'None of the above'],
+                      correctAnswer: 'stringify()',
+                    },
+                    {
+                      question: 'Which of the following keywords is used to define a variable in Javascript?',
+                      choices: ['var', 'let', 'var and let', 'None of the above'],
+                      correctAnswer: 'var and let',
+                    },
+                 ]
                   `;
 
         const result = await model.generateContentStream(modifiedPrompt);
