@@ -8,6 +8,7 @@ import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
 import { axiosInstance } from '../../../utils';
 
 
+
 const Product = () => {
   const user = useSelector(state => state.user);
   const text = useSelector(state => state.generatedText);
@@ -46,9 +47,55 @@ const Product = () => {
           className="hidden justify-between items-center w-full lg:flex lg:w-auto "
           id="mobile-menu-2"
         >
-          <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-            {/* Navigation links */}
-          </ul>
+         <nav>
+           <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
+                        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                            <li>
+                                <NavLink
+                                    to="/"
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                                    }
+                                    activeClassName="text-primary-1250"
+                                >
+                                    Home
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                                    }
+                                >
+                                    Features
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/product"
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                                    }
+                                    activeClassName="text-primary-1250"
+                                >
+                                    Get Started
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/contactUs"
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-primary-1250" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-white lg:p-0`
+                                    }
+                                    activeClassName="text-primary-1250"
+                                >
+                                    Contact Us
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </div>
+         </nav>
         </div>
 
         <div class="flex items-center justify-center">
@@ -67,15 +114,13 @@ const Product = () => {
         </div>
       </aside>
 
-      <div class="p-4 sm:ml-64 bg-black min-h-screen">
+      <div class="p-4 sm:ml-64 bg-black min-h-screen w-fit">
         <div class="p-4 b  rounded-lg dark:border-gray-700 mt-14">
-          <div class="grid grid-cols-3 gap-4 mb-4">
-            {/* Main content */}
-          </div>
-          <div class="flex items-center justify-center h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-white font-normal p-8 flex gap-6 flex-col">
+          
+          <div class="flex text-2xl font-bold p-12 w-fit text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+            
               <MarkdownComponent />
-            </p>
+          
           </div>
           <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3">
             <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
