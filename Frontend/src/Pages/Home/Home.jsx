@@ -3,9 +3,19 @@ import Card from '../../Components/Card/Card';
 import Feauters from '../../Components/Feauters/Feauters';
 import ContactUs from '../../Components/ContactUs/ContactUs';
 import { useSelector } from 'react-redux';
+import YouTube from 'react-youtube';
 
 const Home = () => {
+  const videoId = 'jRhqx1_KcCk';
 
+  // Options for the YouTube player
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 0, // Autoplay disabled
+    },
+  };
  
   return (
   
@@ -14,7 +24,7 @@ const Home = () => {
         <img
           src='./src/assets/shape-2.png'
           alt="Background"
-          className="absolute top-16 left-0 h-1/2 md:w-3/4 sm:w-full "
+          className="w-96 h-96 "
         />
 
         <img
@@ -22,12 +32,15 @@ const Home = () => {
           alt="Background"
           className="absolute right-0 h-1/3  rotate-180"
         />
-        {/* <div class='absolute  md:right-36 sm:right-36 right-6 top-96 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0'>
-          <iframe width="100%" height="100%" src="https://youtu.be/QM-tDK7lurA?si=8MWI47pC1M7aB-FO" frameborder="0" allowfullscreen></iframe>
+      < div className='absolute md:right-36 sm:right-36 right-4 top-96 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0 justify-center items-center flex h-60 w-11/12 '>
+        {/* YouTube video */}
+        
+          <YouTube videoId={videoId} opts={opts} className='absolute top-0 left-0 w-full h-full' />
+        
 
-        </div> */}
+        </div>
 
-        <div className=' text-6xl md:left-20 sm:left-20 left-7 absolute md:top-48 text-white font-rubik-doodle-shadow flex flex-col gap-6 md:w-2/4 justify-center sm:top-5 sm:w-4/5'>
+        <div className=' text-6xl md:left-20 sm:left-20 left-7 absolute md:top-48 text-white font-rubik-doodle-shadow flex flex-col gap-6 md:w-2/4 justify-center sm:top-5 sm:w-4/5 top-4'>
           <h1 className=' md:text-6xl text-5xl text-white font-rubik-doodle-shadow font-extrabold'>
             Genius Gen
           </h1>
@@ -41,7 +54,7 @@ const Home = () => {
       </div>
 
       <div className=' h-screen w-full flex flex-col gap-14 items-center '>
-        <h1 className=' text-white md:text-6xl font-extrabold z-20 sm:text-5xl sm:mt-8 md:mt-0 mt-0 text-2xl'>Know About GeniusGen</h1>
+        <h1 className=' text-white md:text-6xl font-extrabold z-20 sm:text-5xl sm:mt-8 md:mt-0 mt-0 text-3xl'>Know About GeniusGen</h1>
 
         <Card />
 

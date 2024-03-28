@@ -44,7 +44,7 @@ const Avataricon = () => {
             {/* Toggle Logout Box */}
             <div
                 className={`${isLogOutOpen ? 'block' : 'hidden'
-                    }  bg-gray-800 absolute md:top-14  h-14 flex items-center justify-center rounded-md rounded-s-none md:left-7 sm:right-3 md:right-0 sm:top-10  w-48 py-2 px-4 right-3 top-10`}
+                    }  bg-gray-800 absolute z-50 md:top-14  h-14 flex items-center justify-center rounded-md rounded-s-none md:left-7 sm:right-3 md:right-0 sm:top-10  w-48 py-2 px-4 right-3 top-10`}
             >
                 {/* Logout button */}
                 <button className='w-full' onClick={handleLogout}>

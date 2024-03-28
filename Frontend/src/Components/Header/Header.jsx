@@ -108,7 +108,7 @@ export default function Header() {
             </nav>
 
             {/* Mobile Navbar */}
-            <div className={`lg:hidden ${isMobileNavOpen ? 'block' : 'hidden'} bg-gray-800 `}>
+            <div className={`lg:hidden ${isMobileNavOpen ? 'block' : 'hidden'} bg-gray-800 relative z-20 `}>
                 <ul className="flex flex-col  font-medium lg:flex-row lg:space-x-8 lg:mt-0 ">
                     <li>
                         <NavLink
