@@ -99,7 +99,7 @@ const Product = () => {
         </div>
 
         <div class="flex items-center justify-center">
-          <div class="flex items-center z-30 relative">
+          <div class="flex items-center ">
           <Avataricon/>
           </div>
         </div>
@@ -114,19 +114,20 @@ const Product = () => {
         </div>
       </aside>
 
-      <div className="sm:ml-64 bg-black min-h-screen md:p-9 p-4 relative -z-10 ">
+      <div className="sm:ml-64 bg-black min-h-screen md:p-9 p-4 relative  ">
 
         <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-16 md:min-w-fit w-full ">
           <MarkdownComponent />
         </div>
-        <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
-            {/* Buttons */}
+        <div class="flex items-center justify-between h-14 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 ">
+            <div className=' h-auto w-96 ce flex items-center justify-between p-8'>
+              {/* Buttons */}
+            </div>
+            <div className=' h-full w-auto  flex items-center justify-center'>
+              <Link to="/quiz" className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12 relative z-40">Test your knowledge with a Quiz</Link>
+            </div>
           </div>
-          <div className=' h-full w-auto  flex items-center justify-center'>
-            <Link to="/quiz" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12">Test your knowledge with a Quiz</Link>
-          </div>
-        </div>
+
       </div>
     </div>
   );
