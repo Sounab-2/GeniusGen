@@ -1,4 +1,4 @@
-import { setLoading, setUser, logout, setGeneratedText } from '../features/userSlice';
+import { setLoading, setUser, logout, setGeneratedText,setQuiz } from '../features/userSlice';
 import { axiosInstance } from '../utils/index';
 
 export const register = (userData, navigate) => async (dispatch) => {
@@ -52,3 +52,19 @@ export const generateText = (textInput) => async (dispatch) => {
     dispatch(setLoading(false)); 
   }
 };
+
+
+export const generateQuiz = () => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await axiosInstance.get(`/api/v1/quiz`);
+    console.log(response.response.data);
+    // dispatch(setQuiz(response));
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(setLoading(false)); 
+  }
+};
+
+

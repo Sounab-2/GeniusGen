@@ -1,12 +1,36 @@
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import { quiz } from './QuizStore';
 import GaugeComponent from 'react-gauge-component'
-import { Link } from 'react-router-dom'
-
-//Component with default values
+import { Link,useNavigate } from 'react-router-dom'
+import { useDispatch,useSelector } from 'react-redux';
+import { generateQuiz } from '../../../actions/authActions';
 
 
 const Quiz = () => {
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();    
+    const navigate = useNavigate(); // Initialize navigate
+  
+    useEffect(() => {
+      if (!user) {
+        navigate('/signin');
+      }
+    }, [user]);
+  
+    // Fetch histories data
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+            await dispatch(generateQuiz());
+          } catch (error) {
+            console.error(error);
+          }
+    
+      };
+  
+      fetchData(); 
+    }); 
+  
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResult, setShowResult] = useState(false);
