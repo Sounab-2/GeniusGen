@@ -72,8 +72,8 @@ const Product = () => {
           <div class="grid grid-cols-3 gap-4 mb-4">
             {/* Main content */}
           </div>
-          <div class="flex items-center justify-center h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
+          <div class="flex items-center justify-center h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+            <p class="text-2xl text-white font-normal p-8 flex gap-6 flex-col">
               <MarkdownComponent />
             </p>
           </div>
