@@ -22,6 +22,16 @@ const History = (props) => {
         }
     }
 
+    const handleDelete = async (historyId)=>{
+        try{
+            await axiosInstance.delete(`/api/v1/history/${historyId}`);
+            
+        }
+        catch(error){
+            console.error(error);
+        }
+    }
+
     return (
         <ul className="space-y-1">
             {histories.map(history => (
@@ -31,10 +41,13 @@ const History = (props) => {
                             <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                             <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                         </svg>
-                        {/* Display history title */}
+                        <button onClick={() => handleClick(history._id)}>
                         <span className="ms-3 capitalize ">{history.title}</span>
-                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-green-700" style={{ right: '0rem' }} onClick={() => handleClick(history._id)}>
-                            Click to {activeHistory === history._id ? 'hide' : 'show'}
+                        </button>
+                       
+                        
+                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-green-700" style={{ right: '0rem' }} onClick={()=> handleDelete(history._id)} >
+                           Delete
                         </button>
                     </Link>
                 </li>

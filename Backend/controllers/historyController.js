@@ -103,6 +103,29 @@ const savedContent = async (req,res)=> {
 
 }
 
+const deleteHistory = async(req,res)=>{
+    
+        try {
+            const historyId = req.params.id;
+            const deletedHistory = await History.findByIdAndDelete(historyId);
+    
+            if (!deletedHistory) {
+                throw new customError.NotFoundError('History not found');
+            }
+    
+            const user = await User.findById(req.user.userId);
+            user.history = user.history.filter(history => history.toString() !== historyId);
+            await user.save();
+    
+            res.status(StatusCodes.OK).json({ message: 'History deleted successfully' });
+        } catch (error) {
+            console.error(error);
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+        }
+    };
+
+
+
 module.exports = {
-    createHistory,getAllHistory,getSingleHistory,savedContent
+    createHistory,getAllHistory,getSingleHistory,savedContent,deleteHistory
 };
