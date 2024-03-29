@@ -68,3 +68,16 @@ export const generateQuiz = () => async (dispatch) => {
 };
 
 
+export const regenerateText = (histId) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await axiosInstance.post(`/api/v1/history/regenerate/${histId}`);
+    dispatch(setGeneratedText(response.data.text));
+    // console.log(response.data.text);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(setLoading(false)); 
+  }
+};
+

@@ -8,17 +8,16 @@ import { axiosInstance } from '../../../utils';
 import Header from '../../Components/Header/Header';
 import { faFloppyDisk , faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { generateText } from '../../../actions/authActions';
+import { generateText, regenerateText } from '../../../actions/authActions';
 
 const Product = () => {
   const user = useSelector(state => state.user);
   const text = useSelector(state => state.generatedText);
-  const regenerateText = useSelector(state => state.regenerateText);
+  const histId = useSelector(state => state.historyId);
   const navigate = useNavigate(); // Initialize navigate
   const [histories, setHistories] = useState([]); // Initialize histories state
   const dispatch = useDispatch();
 
-  console.log(regenerateText)
   useEffect(() => {
     if (!user) {
       navigate('/signin');
@@ -42,7 +41,8 @@ const Product = () => {
   const handleClick = async (e) => {
     e.preventDefault();
         try {
-            await dispatch(generateText(regenerateText));
+          // console.log(histId);
+            await dispatch(regenerateText(histId));
         } catch (error) {
             console.log(error);
         }

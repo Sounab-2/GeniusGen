@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
   generatedText: '',
   quiz: null,
-  regenerateText: ''
+  historyId: null
 };
 
 const userSlice = createSlice({
@@ -29,11 +29,11 @@ const userSlice = createSlice({
     setQuiz: (state, action) => {
       state.quiz = action.payload;
     },
-    setRegenerateText: (state, action) => {
-      state.regenerateText = action.payload;
+    setHistoryId: (state, action) => {
+      state.historyId = action.payload;
     }
   } 
 }); 
 
-export const { setUser, setLoading, logout, setGeneratedText,setQuiz,setRegenerateText } = userSlice.actions;
+export const { setUser, setLoading, logout, setGeneratedText,setQuiz,setHistoryId } = userSlice.actions;
 export default userSlice.reducer;
