@@ -51,14 +51,14 @@ const login = async (req,res) => {
 
 const logout = async (req, res) => {
     // Clear the logout cookie
+    res.clearCookie('token');
+
     res.cookie('token', 'logout', {
         httpOnly: true,
         expires: new Date(Date.now()),
     });
 
-    // Clear the JWT token cookie from the client-side
-    res.clearCookie('token');
-
+    
     // Send a response indicating successful logout
     res.send('User logged out');
 }
