@@ -24,7 +24,7 @@ const History = (props) => {
 
     const handleDelete = async (historyId)=>{
         try{
-            await axiosInstance.delete(`/api/v1/history/${historyId}`);
+            await axiosInstance.delete(`/api/v1/history/deleteHistory/${historyId}`);
             
         }
         catch(error){
