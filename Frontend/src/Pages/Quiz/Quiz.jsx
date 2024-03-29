@@ -14,7 +14,7 @@ const Quiz = () => {
     const qsns = useSelector(state => state.quiz);
     const dispatch = useDispatch();
     const navigate = useNavigate(); // Initialize navigate
-    const isLoading = useSelector((state) => state.user && state.user.isLoading);
+    const isLoading = useSelector((state) => state.user && state.isLoading);
     useEffect(() => {
         if (!user) {
             navigate('/signin');
@@ -90,8 +90,8 @@ const Quiz = () => {
         <section className="w-full min-h-screen bg-black flex justify-center items-center">
             {isLoading && (
               <div className="loader flex-items-center z-10">
-              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
-              <span className="text-white">Loading...</span>
+              <FontAwesomeIcon icon={faSpinner} spin className="text-black mr-2" />
+              <span className="text-black">Loading...</span>
             </div>
             )}
             

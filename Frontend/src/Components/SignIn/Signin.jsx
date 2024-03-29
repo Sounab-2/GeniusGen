@@ -11,7 +11,7 @@ import { setLoading } from '../../../features/userSlice';
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const isLoading = useSelector((state) => state.user && state.user.isLoading);
+    const isLoading = useSelector((state) => state.user && state.isLoading);
 
 
 
@@ -66,7 +66,7 @@ const Signin = () => {
                 Don’t have an account yet? <Link to="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
               </p>
               {isLoading && (
-              <div className="loader flex-items-center z-10">
+              <div className="loader flex justify-center z-10">
               <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
               <span className="text-white">Signing in...</span>
             </div>

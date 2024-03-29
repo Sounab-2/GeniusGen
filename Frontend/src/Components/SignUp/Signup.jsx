@@ -13,7 +13,7 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const isLoading = useSelector((state) => state.user && state.user.isLoading);
+    const isLoading = useSelector((state) => state.user && state.isLoading);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
