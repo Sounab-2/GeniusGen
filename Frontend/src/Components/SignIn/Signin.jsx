@@ -3,10 +3,18 @@ import { Link,useNavigate } from 'react-router-dom';
 // import { axiosInstance } from '../../../utils/index';
 import {login} from '../../../actions/authActions'
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { setLoading } from '../../../features/userSlice';
+
 
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const isLoading = useSelector((state) => state.user && state.user.isLoading);
+
+
+
 
     // const user = useSelector(state => state.user);
     // // console.log(user);
@@ -16,10 +24,15 @@ const Signin = () => {
 
       const handleSubmit = async (e) => {
           e.preventDefault();
+          dispatch(setLoading(true));
+          
           try {
               await dispatch(login({ email, password },navigate));
             } catch (error) {
               console.error(error);
+            }
+            finally{
+              dispatch(setLoading(false));
             }
       }
 
@@ -52,6 +65,12 @@ const Signin = () => {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet? <Link to="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
               </p>
+              {isLoading && (
+              <div className="loader flex-items-center z-10">
+              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+              <span className="text-white">Signing in...</span>
+            </div>
+            )}
             </form>
           </div>
         </div>

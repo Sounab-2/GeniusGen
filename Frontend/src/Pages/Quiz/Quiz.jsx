@@ -4,13 +4,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import GaugeComponent from 'react-gauge-component';
 import { generateQuiz } from '../../../actions/authActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { setLoading } from '../../../features/userSlice';
+
 
 const Quiz = () => {
     const user = useSelector(state => state.user);
     const qsns = useSelector(state => state.quiz);
     const dispatch = useDispatch();
     const navigate = useNavigate(); // Initialize navigate
-
+    const isLoading = useSelector((state) => state.user && state.user.isLoading);
     useEffect(() => {
         if (!user) {
             navigate('/signin');
@@ -18,12 +22,15 @@ const Quiz = () => {
     }, [user]);
 
     useEffect(() => {
+        dispatch(setLoading(true));
         const fetchData = async () => {
             try {
                 await dispatch(generateQuiz());
             } catch (error) {
                 console.error(error);
-            }
+            }finally{
+                dispatch(setLoading(false));
+              }
         };
 
         fetchData();
@@ -41,7 +48,12 @@ const Quiz = () => {
     const [answered, setAnswered] = useState(false); // Track if an answer has been selected
 
     if (!qsns || !qsns.mcqQuestions) {
-        return <div>Loading...</div>; // Handle the case when mcqQuestions is null or undefined
+        return <div>
+            <div className="loader flex-items-center z-10">
+              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+              <span className="text-white">Loading Quiz...</span>
+            </div>
+        </div>; // Handle the case when mcqQuestions is null or undefined
     }
 
     const { mcqQuestions } = qsns;
@@ -76,6 +88,13 @@ const Quiz = () => {
 
     return (
         <section className="w-full min-h-screen bg-black flex justify-center items-center">
+            {isLoading && (
+              <div className="loader flex-items-center z-10">
+              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+              <span className="text-white">Loading...</span>
+            </div>
+            )}
+            
             <div>
                 {!showResult ? (
                     <div className="max-w-screen-md mx-auto bg-gray-900 rounded-lg mt-20 px-6 py-12">

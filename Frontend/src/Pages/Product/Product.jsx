@@ -5,10 +5,13 @@ import History from '../../Components/Historybox/History';
 import { useSelector,useDispatch } from 'react-redux';
 import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
 import { axiosInstance } from '../../../utils';
+import { setLoading, setUser,setQuiz } from '../../../features/userSlice';
 import Header from '../../Components/Header/Header';
 import { faFloppyDisk , faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateText, regenerateText } from '../../../actions/authActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
   const user = useSelector(state => state.user);
@@ -17,6 +20,9 @@ const Product = () => {
   const navigate = useNavigate(); // Initialize navigate
   const [histories, setHistories] = useState([]); // Initialize histories state
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.user && state.user.isLoading);
+
+
 
   useEffect(() => {
     if (!user) {
@@ -26,12 +32,15 @@ const Product = () => {
 
   // Fetch histories data
   useEffect(() => {
+    dispatch(setLoading(true));
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get('/api/v1/history/getAllHistory');
         setHistories(response.data.histories); // Set histories state after fetching data
       } catch (error) {
         console.log(error);
+      }finally{
+        dispatch(setLoading(false));
       }
     };
 
@@ -74,6 +83,12 @@ const Product = () => {
             </div>
           </aside>
           <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit  w-full ">
+          {isLoading && (
+              <div className="loader flex-items-center z-10">
+              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+              <span className="text-white">Loading...</span>
+            </div>
+            )}
             <MarkdownComponent />
           </div>
         </div>
