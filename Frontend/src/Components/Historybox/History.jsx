@@ -18,7 +18,7 @@ const History = (props) => {
             console.log(generatedText)
 
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
     }
 
