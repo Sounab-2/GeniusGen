@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import SearchBox from '../../Components/SearchBox/SearchBox';
 import History from '../../Components/Historybox/History';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
 import { axiosInstance } from '../../../utils';
 import Header from '../../Components/Header/Header';
 import { faFloppyDisk , faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { generateText } from '../../../actions/authActions';
 
 const Product = () => {
   const user = useSelector(state => state.user);
   const text = useSelector(state => state.generatedText);
+  const regenerateText = useSelector(state => state.regenerateText);
   const navigate = useNavigate(); // Initialize navigate
   const [histories, setHistories] = useState([]); // Initialize histories state
+  const dispatch = useDispatch();
 
+  console.log(regenerateText)
   useEffect(() => {
     if (!user) {
       navigate('/signin');
@@ -35,6 +39,18 @@ const Product = () => {
     fetchData();
   }, [text]);
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+        try {
+            await dispatch(generateText(regenerateText));
+        } catch (error) {
+            console.log(error);
+        }
+}
+
+
+
+
   // Render the History component only when histories array is not empty
   return (
 
@@ -47,13 +63,6 @@ const Product = () => {
         <hr />
 
       </div>
-
-
-
-
-
-
-
       <div className=" bg-black min-h-screen  p-4 relative flex flex-col  ">
         <div className=' flex gap-2 justify-center items-center'>
           <aside id="logo-sidebar" class="fixed  top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-black dark:border-gray-700 mt-16" aria-label="Sidebar">
@@ -64,16 +73,13 @@ const Product = () => {
               </ul>
             </div>
           </aside>
-
-
-
           <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit  w-full ">
             <MarkdownComponent />
           </div>
         </div>
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
-            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl '>
+            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)}>
             <FontAwesomeIcon icon={faRedoAlt} />
             </button>
 

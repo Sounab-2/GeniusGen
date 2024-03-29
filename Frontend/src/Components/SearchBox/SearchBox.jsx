@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { axiosInstance } from '../../../utils';
+// import { axiosInstance } from '../../../utils';
 import { generateText } from '../../../actions/authActions';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import History from '../Historybox/History';
+
+
 const SearchBox = () => {
     const [textInput, setTextInput] = useState('');
     const [isHistoryOpen, setHistoryOpen] = useState(false);
     
-
     const toggleHistory = () => {
         setHistoryOpen(!isHistoryOpen);
     };

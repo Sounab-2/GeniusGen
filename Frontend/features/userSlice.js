@@ -4,7 +4,8 @@ const initialState = {
   user: null,
   isLoading: false,
   generatedText: '',
-  quiz: null
+  quiz: null,
+  regenerateText: ''
 };
 
 const userSlice = createSlice({
@@ -27,9 +28,12 @@ const userSlice = createSlice({
     },
     setQuiz: (state, action) => {
       state.quiz = action.payload;
+    },
+    setRegenerateText: (state, action) => {
+      state.regenerateText = action.payload;
     }
   } 
 }); 
 
-export const { setUser, setLoading, logout, setGeneratedText,setQuiz } = userSlice.actions;
+export const { setUser, setLoading, logout, setGeneratedText,setQuiz,setRegenerateText } = userSlice.actions;
 export default userSlice.reducer;
