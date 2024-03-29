@@ -41,13 +41,31 @@ const login = async (req,res) => {
     attachCookiesToResponse({res,user: tokenUser})
     res.status(StatusCodes.CREATED).json({user: tokenUser});
 }
-const logout = async (req,res) => {
-    res.cookie('token','logout',{
+// const logout = async (req,res) => {
+//     res.cookie('token','logout',{
+//         httpOnly: true,
+//         expires: new Date(Date.now()),
+//     });
+//     res.send('user logged out');
+// }
+
+const logout = async (req, res) => {
+    // Clear the logout cookie
+    res.cookie('token', 'logout', {
         httpOnly: true,
         expires: new Date(Date.now()),
     });
-    res.send('user logged out');
+
+    // Clear the JWT token cookie from the client-side
+    res.clearCookie('token');
+
+    // Send a response indicating successful logout
+    res.send('User logged out');
 }
+
+module.exports = {
+    logout,
+};
 
 
 module.exports = {
