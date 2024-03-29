@@ -83,8 +83,6 @@ const History = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // This effect runs when the component mounts and whenever histories changes
-        // You can fetch the histories again here to ensure the component always has the latest data
         setHistories(props.histories || []);
     }, [props.histories]);
 

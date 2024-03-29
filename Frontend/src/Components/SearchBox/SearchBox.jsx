@@ -20,6 +20,7 @@ const SearchBox = () => {
         e.preventDefault();
         try {
             await dispatch(generateText(textInput));
+            setTextInput('');
         } catch (error) {
             console.error('Error sending text:', error);
         }
