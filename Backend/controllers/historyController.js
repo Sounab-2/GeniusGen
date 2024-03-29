@@ -113,9 +113,9 @@ const deleteHistory = async(req,res)=>{
                 throw new customError.NotFoundError('History not found');
             }
     
-            const user = await User.findById(req.user.userId);
-            user.history = user.history.filter(history => history.toString() !== historyId);
-            await user.save();
+            // const user = await User.findById(req.user.userId);
+            // user.history = user.history.filter(history => history.toString() !== historyId);
+            // await user.save();
     
             res.status(StatusCodes.OK).json({ message: 'History deleted successfully' });
         } catch (error) {
