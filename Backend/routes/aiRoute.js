@@ -11,6 +11,6 @@ const {
 }=require('../controllers/quizcontroller');
 
 router.post('/',authenticateUser,searchTopic);
-router.get('/',authenticateUser,getQuiz)
+router.get('/:id',authenticateUser,getQuiz)
 
 module.exports = router;

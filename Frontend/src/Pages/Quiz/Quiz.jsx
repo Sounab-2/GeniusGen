@@ -12,6 +12,7 @@ import { setLoading } from '../../../features/userSlice';
 const Quiz = () => {
     const user = useSelector(state => state.user);
     const qsns = useSelector(state => state.quiz);
+    const histId = useSelector(state => state.historyId);
     const dispatch = useDispatch();
     const navigate = useNavigate(); // Initialize navigate
     const isLoading = useSelector((state) => state.user && state.isLoading);
@@ -25,7 +26,7 @@ const Quiz = () => {
         dispatch(setLoading(true));
         const fetchData = async () => {
             try {
-                await dispatch(generateQuiz());
+                await dispatch(generateQuiz(histId));
             } catch (error) {
                 console.error(error);
             } finally {

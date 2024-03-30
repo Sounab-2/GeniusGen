@@ -54,10 +54,10 @@ export const generateText = (textInput) => async (dispatch) => {
 };
 
 
-export const generateQuiz = () => async (dispatch) => {
+export const generateQuiz = (histId) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const response = await axiosInstance.get(`/api/v1/quiz`);
+    const response = await axiosInstance.get(`/api/v1/quiz/${histId}`);
     // console.log(response.data);
     dispatch(setQuiz(response.data));
   } catch (error) {
