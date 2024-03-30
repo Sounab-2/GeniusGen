@@ -126,7 +126,7 @@ const History = (props) => {
                         <button onClick={() => handleClick(history._id)}>
                             <span className="ms-3 capitalize ">{history.title}</span>
                         </button>
-                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-red-600" style={{ right: '0rem' }} onClick={() => handleDelete(history._id)} >
+                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-red-600" style={{ right: '0rem' }} onClick={() => handleDelete(history._id)} title='Delete' >
                         <span><FontAwesomeIcon icon={faTrash} /></span>
                         </button>
                     </Link>

@@ -7,7 +7,7 @@ import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
 import { axiosInstance } from '../../../utils';
 import { setLoading, setUser, setQuiz } from '../../../features/userSlice';
 import Header from '../../Components/Header/Header';
-import { faFloppyDisk, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faArrowUpRightFromSquare, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateText, regenerateText } from '../../../actions/authActions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +21,7 @@ const Product = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.user && state.isLoading);
 
+  
 
 
   useEffect(() => {
@@ -89,6 +90,8 @@ const Product = () => {
               </div>
             )}
             {!isLoading && <MarkdownComponent />}
+        
+
           </div>
 
 
@@ -96,12 +99,14 @@ const Product = () => {
         </div>
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
-            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)}>
+            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenarate' >
+
               <FontAwesomeIcon icon={faRedoAlt} />
+              
             </button>
 
-            <button className='hover: bg-lime-400  border-lime-600 rounded-md p-2 text-white text-xl w-10'>
-              <FontAwesomeIcon icon={faFloppyDisk} />
+            <button className='hover: bg-lime-400  border-lime-600 rounded-md p-2 text-white text-xl w-10' title='Know More'>
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </button>
           </div>
           <div className=' h-full w-auto  flex items-center justify-center'>

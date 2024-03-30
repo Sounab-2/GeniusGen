@@ -26,6 +26,11 @@ const MarkdownViewer = () => {
     pre: ({ children }) => <pre className="bg-black flex flex-wrap md:text-lg text-xs rounded-lg text-green-700 p-3 text-left md:p-10 overflow-x-auto">{children}</pre>,
     
   };
+  if (!text.trim()) {
+    return (
+      <div className="h-full  min-h-80 w-full flex justify-center items-center font-extrabold text-white">How can I help you today?</div>
+    );
+  }
   
   return (
     <>

@@ -4,6 +4,7 @@ import Feauters from '../../Components/Feauters/Feauters';
 import ContactUs from '../../Components/ContactUs/ContactUs';
 import { useSelector } from 'react-redux';
 import YouTube from 'react-youtube';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const videoId = 'jRhqx1_KcCk';
@@ -49,7 +50,7 @@ const Home = () => {
 
             At GeniusGen, we believe that knowledge is the ultimate superpower, and we're here to equip you with the tools you need to unlock your full potential. Immerse yourself in our curated blog posts, crafted by AI to spark curiosity and inspire discovery. Then, put your intellect to the test with our thought-provoking quizzes, designed to challenge and entertain.
           </p>
-          <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-64 h-12">Know More</button>
+          <Link to='/about' type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-64 h-12">Know More</Link>
         </div>
       </div>
 
