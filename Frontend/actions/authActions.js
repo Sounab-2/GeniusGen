@@ -38,6 +38,7 @@ export const logoutUser = (navigate) => async (dispatch) => {
     await axiosInstance.get('/api/v1/auth/logout');
     // navigate('/'); 
     dispatch(logout());
+    toast.success('User logged out successfully!');
   } catch (error) {
     console.log(error);
   } finally {
