@@ -1,4 +1,4 @@
-import { setLoading, setUser, logout, setGeneratedText,setQuiz } from '../features/userSlice';
+import { setLoading, setUser, logout, setGeneratedText,setQuiz,setActiveHistory } from '../features/userSlice';
 import { axiosInstance } from '../utils/index';
 import {toast} from 'react-toastify'
 
@@ -46,15 +46,20 @@ export const logoutUser = (navigate) => async (dispatch) => {
   }
 };
 
-export const generateText = (textInput) => async (dispatch) => {
+export const generateText = (textInput,activeHistory) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     const response = await axiosInstance.post(`/api/v1/search?Topic=${textInput}`);
+    const histId = response.data.histId;
+    const activeSelect = async (histId) => {
+      dispatch(setActiveHistory(activeHistory === histId ? null : histId));
+    }
     if(response.data.text === 'null'){
       dispatch(setGeneratedText(''))
       toast.error('Please Search related to Programming or Computer Science');
     }else{
       dispatch(setGeneratedText(response.data.text));
+      activeSelect(histId);
     }
     // console.log(response.data.text);
   } catch (error) {

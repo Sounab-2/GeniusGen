@@ -5,12 +5,13 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import History from '../Historybox/History';
-
+import { useSelector } from 'react-redux';
 
 const SearchBox = () => {
     const [textInput, setTextInput] = useState('');
     const [isHistoryOpen, setHistoryOpen] = useState(false);
-    
+    const activeHistory = useSelector(state => state.activeHistory);
+
     const toggleHistory = () => {
         setHistoryOpen(!isHistoryOpen);
     };
@@ -19,7 +20,7 @@ const SearchBox = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await dispatch(generateText(textInput));
+            await dispatch(generateText(textInput,activeHistory));
             setTextInput('');
         } catch (error) {
             console.error('Error sending text:', error);

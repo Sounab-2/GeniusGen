@@ -23,18 +23,13 @@ const History = (props) => {
         try {
             const response = await axiosInstance.get(`/api/v1/history/${histId}`);
             dispatch(setGeneratedText(response.data.content.body));
-            console.log(generatedText)
             dispatch(setHistoryId(histId));
         } catch (error) {
             console.log(error);
         }
     }
 
-    useEffect(() => {
-        
-    }, []);
-
-
+    
 
     const handleDelete = async (historyId) => {
         dispatch(setLoading(true));
