@@ -7,7 +7,6 @@ const searchTopic = async (req, res) => {
         const userId = req.user.userId;
         const prompt = req.query.Topic;
         const text = await search(prompt);
-        getPrompt(prompt)
         res.status(StatusCodes.OK).json({ text, userId });
         await createHistory(prompt, text, userId); 
     } catch (error) {
