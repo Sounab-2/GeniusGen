@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const {setQuiz} = require('./Gemini');
+const History = require('../model/History');
 
 // const getPrompt = (topicPrompt) => {
 //     prompt = topicPrompt;
