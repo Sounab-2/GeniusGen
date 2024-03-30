@@ -48,12 +48,13 @@ const Quiz = () => {
     const [answered, setAnswered] = useState(false); // Track if an answer has been selected
 
     if (!qsns || !qsns.mcqQuestions) {
-        return <div>
-            <div className="loader flex-items-center z-10">
-                <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
-                <span className="text-black">Loading Quiz...</span>
+        return <>
+            <div className="loader absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-slate-900 flex-col gap-2">
+              <img src="./src/assets/loader.gif" alt="" />
+              <span className="text-white text-lg">Processing... Just a moment</span>
             </div>
-        </div>; // Handle the case when mcqQuestions is null or undefined
+            </>
+          // Handle the case when mcqQuestions is null or undefined
     }
 
     const { mcqQuestions } = qsns;
