@@ -75,6 +75,8 @@ import { Link } from 'react-router-dom';
 import { axiosInstance } from '../../../utils/index';
 import { useSelector, useDispatch } from "react-redux";
 import { setGeneratedText, setHistoryId, setLoading } from "../../../features/userSlice";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const History = (props) => {
     const [histories, setHistories] = useState(props.histories || []);
@@ -124,8 +126,8 @@ const History = (props) => {
                         <button onClick={() => handleClick(history._id)}>
                             <span className="ms-3 capitalize ">{history.title}</span>
                         </button>
-                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-green-700" style={{ right: '0rem' }} onClick={() => handleDelete(history._id)} >
-                            Delete
+                        <button className="absolute bottom-2 mt-2 mr-2 text-xs text-red-600" style={{ right: '0rem' }} onClick={() => handleDelete(history._id)} >
+                        <span><FontAwesomeIcon icon={faTrash} /></span>
                         </button>
                     </Link>
                 </li>

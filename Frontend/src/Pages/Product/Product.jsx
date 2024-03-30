@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import SearchBox from '../../Components/SearchBox/SearchBox';
 import History from '../../Components/Historybox/History';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import MarkdownComponent from '../../Components/Markdown/MarkdownComponent';
 import { axiosInstance } from '../../../utils';
-import { setLoading, setUser,setQuiz } from '../../../features/userSlice';
+import { setLoading, setUser, setQuiz } from '../../../features/userSlice';
 import Header from '../../Components/Header/Header';
-import { faFloppyDisk , faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFloppyDisk, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateText, regenerateText } from '../../../actions/authActions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -38,7 +38,7 @@ const Product = () => {
         setHistories(response.data.histories); // Set histories state after fetching data
       } catch (error) {
         console.log(error);
-      }finally{
+      } finally {
         dispatch(setLoading(false));
       }
     };
@@ -48,13 +48,13 @@ const Product = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-        try {
-          // console.log(histId);
-            await dispatch(regenerateText(histId));
-        } catch (error) {
-            console.log(error);
-        }
-}
+    try {
+      // console.log(histId);
+      await dispatch(regenerateText(histId));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
 
@@ -81,24 +81,25 @@ const Product = () => {
               </ul>
             </div>
           </aside>
-          <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit  w-full ">
-          {isLoading && (
-              <div className="loader flex justify-center z-10">
-              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
-              <span className="text-white">Loading...</span>
-            </div>
+          <div className="flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit w-full relative">
+            {isLoading && (
+              <div className="loader absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-slate-900 flex-col gap-2">
+                <img src="./src/assets/loader.gif" alt="" />
+                <span className="text-white text-lg">Processing... Just a moment</span>
+              </div>
             )}
             <MarkdownComponent />
           </div>
+
         </div>
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
             <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)}>
-            <FontAwesomeIcon icon={faRedoAlt} />
+              <FontAwesomeIcon icon={faRedoAlt} />
             </button>
 
             <button className='hover: bg-lime-400  border-lime-600 rounded-md p-2 text-white text-xl w-10'>
-            <FontAwesomeIcon icon={faFloppyDisk} />
+              <FontAwesomeIcon icon={faFloppyDisk} />
             </button>
           </div>
           <div className=' h-full w-auto  flex items-center justify-center'>

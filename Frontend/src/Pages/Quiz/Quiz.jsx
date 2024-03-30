@@ -28,9 +28,9 @@ const Quiz = () => {
                 await dispatch(generateQuiz());
             } catch (error) {
                 console.error(error);
-            }finally{
+            } finally {
                 dispatch(setLoading(false));
-              }
+            }
         };
 
         fetchData();
@@ -50,8 +50,8 @@ const Quiz = () => {
     if (!qsns || !qsns.mcqQuestions) {
         return <div>
             <div className="loader flex-items-center z-10">
-              <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
-              <span className="text-white">Loading Quiz...</span>
+                <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+                <span className="text-black">Loading Quiz...</span>
             </div>
         </div>; // Handle the case when mcqQuestions is null or undefined
     }
@@ -89,15 +89,16 @@ const Quiz = () => {
     return (
         <section className="w-full min-h-screen bg-black flex justify-center items-center">
             {isLoading && (
-              <div className="loader flex-items-center z-10">
-              <FontAwesomeIcon icon={faSpinner} spin className="text-black mr-2" />
-              <span className="text-black">Loading...</span>
-            </div>
+                <div className="loader absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-slate-900 flex-col gap-2">
+                    <img src="./src/assets/loader.gif" alt="" />
+                    <span className="text-white text-lg">Processing... Just a moment</span>
+                </div>
             )}
-            
-            <div>
+
+
+            <div className=' flex justify-center items-center'>
                 {!showResult ? (
-                    <div className="max-w-screen-md mx-auto bg-gray-900 rounded-lg mt-20 px-6 py-12">
+                    <div className="w-96 md:w-2/3 bg-gray-900 rounded-lg mt-20 px-6 py-12">
                         <img
                             src="./src/assets/shape-4.png"
                             alt="Background"
@@ -142,7 +143,7 @@ const Quiz = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="flex flex-col justify-center items-center gap-6 bg-gray-800 rounded-lg p-14 ">
+                    <div className="flex flex-col justify-center items-center gap-6 bg-gray-800 rounded-lg p-14 md:w-auto w-96 ">
                         <div className="bg-gray-700 h-72 w-72 flex items-center justify-center rounded-full">
                             <GaugeComponent
                                 arc={{
