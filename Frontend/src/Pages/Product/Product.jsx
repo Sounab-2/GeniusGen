@@ -78,7 +78,7 @@ const Product = () => {
             <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-black">
             <ul className="space-y-2 font-medium">
                     {histories.length === 0 ? (
-                  <p className="text-white">No history available</p>
+                  <div className="text-white min-h-96 flex justify-center items-center">No history available</div>
                                ) : (
                      <History histories={histories} />
                 )}
@@ -100,6 +100,7 @@ const Product = () => {
 
 
         </div>
+        { text!='' ? (
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
             <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenarate' >
@@ -112,10 +113,17 @@ const Product = () => {
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </button>
           </div>
-          { text!=='' && (<div className=' h-full w-auto  flex items-center justify-center'>
+          <div className=' h-full w-auto  flex items-center justify-center'>
             <Link to="/quiz" className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12 relative z-40">Test your knowledge with a Quiz</Link>
-          </div>)}
-        </div>
+          </div>
+        </div>):(
+          <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
+
+          </div>
+          
+        )
+  }
+      
 
 
       </div>
