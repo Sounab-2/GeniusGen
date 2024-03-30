@@ -44,4 +44,50 @@ const search = async (topic) => {
     return text;
 }
 
-module.exports = {search};
+
+const setQuiz = async (topic)=> {
+    try{    
+        const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+        const modifiedPrompt = `Generate 10 multiple-choice questions (MCQs) on ${topic}
+        Ensure that all property names are enclosed in double quotation marks.
+        Make sure that each key-value pair is separated by a comma.
+        Check that all opening curly braces { have a corresponding closing curly brace }.
+        Verify that strings are properly enclosed in double quotation marks.
+        Don't give any kind of signs or spaces only the content and don't need to add any question number. Structly follow the demo of the response given.
+        Strictly give 4 choices for each question
+                  A demo of response is given below:
+
+                  questions: [
+                    {
+                      question: 'Which function is used to serialize an object into a JSON string in Javascript?',
+                      choices: ['stringify()', 'parse()', 'convert()', 'None of the above'],
+                      correctAnswer: 'stringify()',
+                    },
+                    {
+                      question: 'Which of the following keywords is used to define a variable in Javascript?',
+                      choices: ['var', 'let', 'var and let', 'None of the above'],
+                      correctAnswer: 'var and let',
+                    },
+                 ]
+                  `;
+
+        const result = await model.generateContentStream(modifiedPrompt);
+        let text = '';
+        for await (const chunk of result.stream) {
+            const chunkText = chunk.text();
+            text += chunkText;
+        }
+
+        // Remove unnecessary parts
+        const startIdx = text.indexOf('[');
+        const endIdx = text.lastIndexOf(']');
+        const jsonText = text.substring(startIdx, endIdx + 1);
+        
+        return jsonText;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+module.exports = {search,setQuiz};
