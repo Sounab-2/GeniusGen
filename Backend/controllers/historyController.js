@@ -31,7 +31,8 @@
     const getAllHistory = async (req, res) => {
         try {
             const user = await User.findById(req.user.userId).populate('history');
-            const histories = user.history.map(history => history.toObject());
+            const originalHistories = user.history.map(history => history.toObject());
+            const histories = originalHistories.slice().reverse();
             res.status(StatusCodes.OK).json({ histories });
         } catch (error) {
             console.error(error);
