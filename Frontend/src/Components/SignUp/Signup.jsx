@@ -35,7 +35,7 @@ const Signup = () => {
         <section className="bg-gray-50 dark:bg-gray-900 min-h-screen flex">
             <div className="flex flex-col items-center justify-center w-4/5 mx-auto md:h-screen lg:py-0">
                 <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-slate-50">
-                    <img className="md:w-64 md:h-32 w-48 h-20" src="./src/assets/logo.png" alt="logo" />
+                    <img className="md:w-64 md:h-32 w-48 h-20" src="/images/logo.png" alt="logo" />
                 </Link>
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

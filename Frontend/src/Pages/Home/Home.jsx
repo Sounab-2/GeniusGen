@@ -22,13 +22,13 @@ const Home = () => {
     <div className="bg-black min-h-screen relative">
       <div className=' h-screen'>
         <img
-          src='./src/assets/shape-2.png'
+          src='/images/shape-2.png'
           alt="Background"
           className="w-96 h-96 "
         />
 
         <img
-          src='./src/assets/shape-4.png'
+          src='/images/shape-4.png'
           alt="Background"
           className="absolute right-0 h-1/3  rotate-180"
         />

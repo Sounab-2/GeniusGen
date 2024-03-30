@@ -33,7 +33,7 @@ const Avataricon = () => {
         <div className="text-white mr-4 flex items-center gap-4 relative">
             <Link onClick={toggleLogout}>
                 <img
-                    src="./src/assets/avatar.png"
+                    src="/images/avatar.png"
                     className="md:h-12 md:w-12 h-9 w-9"
                     alt="avatar"
                 />

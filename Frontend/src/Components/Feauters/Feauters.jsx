@@ -5,7 +5,7 @@ const Feauters = () => {
     
       <section class="bg-green-1000">
           <img
-          src='./src/assets/shape-2.png'
+          src='/images/shape-2.png'
           alt="Background"
           className="absolute left-0 h-96 "
         />

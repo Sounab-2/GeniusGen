@@ -4,7 +4,7 @@ const ContactUs = () => {
   return (
     <section class="bg-white dark:bg-black">
        <img
-          src='./src/assets/shape-4.png'
+          src='/images/shape-4.png'
           alt="Background"
           className="absolute right-0 h-96  rotate-180"
         />

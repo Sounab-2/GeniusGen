@@ -12,7 +12,7 @@ const Card = () => {
     class="absolute duration-700 shadow-md group-hover:-translate-y-4 group-hover:-translate-x-4 -bottom-16 -right-10 w-1/2 h-3/5 rounded-lg bg-gray-800 md:flex justify-center items-center  sm:flex hidden"
   >
     {/* <div className=' shadow-2xl shadow-slate-50 rounded-full flex items-center justify-center h-56 w-56 bg-yellow-300 '> */}
-    <img src="./src/assets/programmer.png" alt="" className=' h-64 w-full' />
+    <img src="/images/programmer.png" alt="" className=' h-64 w-full' />
     {/* </div> */}
 </div>
     {/* <h2 class="text-2xl font-bold mb-2 text-gray-100">Dark Card</h2> */}
