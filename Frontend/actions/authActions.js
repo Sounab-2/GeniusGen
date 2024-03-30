@@ -1,5 +1,6 @@
 import { setLoading, setUser, logout, setGeneratedText,setQuiz } from '../features/userSlice';
 import { axiosInstance } from '../utils/index';
+import {toast} from 'react-toastify'
 
 export const register = (userData, navigate) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -7,8 +8,10 @@ export const register = (userData, navigate) => async (dispatch) => {
     const response = await axiosInstance.post('/api/v1/auth/register', userData);
     dispatch(setUser(response.data.user));
     navigate('/signin');
-  } catch (error) {
+    toast.success('Account created successfully!');
+    } catch (error) {
     console.log(error.response.data.msg);
+    toast.error(error.response.data.msg);
   } finally {
     dispatch(setLoading(false)); // Set loading to false after operation completes
   }
@@ -20,8 +23,10 @@ export const login = (userData, navigate) => async (dispatch) => {
     const response = await axiosInstance.post('/api/v1/auth/login', userData);
     dispatch(setUser(response.data.user));
     navigate('/product');
+    toast.success('User logged in successfully!');
   } catch (error) {
     console.log(error);
+    toast.error(error.response.data.msg);
   } finally {
     dispatch(setLoading(false)); // Set loading to false after operation completes
   }
@@ -44,8 +49,13 @@ export const generateText = (textInput) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     const response = await axiosInstance.post(`/api/v1/search?Topic=${textInput}`);
-    dispatch(setGeneratedText(response.data.text));
-    console.log(response.data.text);
+    if(response.data.text === 'null'){
+      dispatch(setGeneratedText(''))
+      toast.error('Please Search related to Programming or Computer Science');
+    }else{
+      dispatch(setGeneratedText(response.data.text));
+    }
+    // console.log(response.data.text);
   } catch (error) {
     console.log(error);
   } finally {
