@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { axiosInstance } from '../../../utils/index';
 import { useSelector, useDispatch } from "react-redux";
-import { setGeneratedText, setHistoryId, setLoading } from "../../../features/userSlice";
+import { setGeneratedText, setHistoryId, setLoading ,setActiveHistory} from "../../../features/userSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {toast} from 'react-toastify'
@@ -10,8 +10,8 @@ import {toast} from 'react-toastify'
 
 const History = (props) => {
     const [histories, setHistories] = useState(props.histories || []);
-    const [activeHistory, setActiveHistory] = useState(null);
     const generatedText = useSelector(state => state.generatedText);
+    const activeHistory = useSelector(state=> state.activeHistory);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const History = (props) => {
     }, [props.histories]);
 
     const handleClick = async (histId) => {
-        setActiveHistory(activeHistory === histId ? null : histId);
+        dispatch(setActiveHistory(activeHistory === histId ? null : histId));
         try {
             const response = await axiosInstance.get(`/api/v1/history/${histId}`);
             dispatch(setGeneratedText(response.data.content.body));
@@ -29,6 +29,12 @@ const History = (props) => {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+        
+    }, []);
+
+
 
     const handleDelete = async (historyId) => {
         dispatch(setLoading(true));

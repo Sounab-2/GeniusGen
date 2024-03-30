@@ -7,8 +7,9 @@ const searchTopic = async (req, res) => {
         const userId = req.user.userId;
         const prompt = req.query.Topic;
         const text = await search(prompt);
-        res.status(StatusCodes.OK).json({ text, userId });
-        await createHistory(prompt, text, userId); 
+        const history = await createHistory(prompt, text, userId); 
+        const histId = history._id;
+        res.status(StatusCodes.OK).json({ text, userId,histId });
     } catch (error) {
         console.error(error);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
