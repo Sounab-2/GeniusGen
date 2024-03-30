@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../../utils/index';
 import { useDispatch, useSelector } from 'react-redux';
-import {register} from '../../../actions/authActions';
+import { register } from '../../../actions/authActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { setLoading } from '../../../features/userSlice';
@@ -13,22 +13,30 @@ const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isClicked, setIsClicked] = useState(false);
+    const [error, setError] = useState(null); 
     const isLoading = useSelector((state) => state.user && state.isLoading);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        setIsClicked(true);
         e.preventDefault();
         dispatch(setLoading(true));
         try {
-            await dispatch(register({ name,email, password },navigate));
-          
-          } catch (error) {
+            await dispatch(register({ name, email, password }, navigate));
+            setError(null);
+           
+        } catch (error) {
             console.error(error);
-          }finally{
+            setError("An error occurred. Please try again.");
+           
+        } finally {
             dispatch(setLoading(false));
-          }
+            setIsClicked(false);
+
+        }
     }
 
     return (
@@ -55,16 +63,25 @@ const Signup = () => {
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                 <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                             </div>
-                            <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
+                            <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" disabled={isLoading || isClicked}>
+                                {isClicked ? (
+                                    <>
+                                        <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+                                        Creating an account...
+                                    </>
+                                ) : (
+                                    "Create an account"
+                                )}
+                            </button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Already have an account? <Link to="/signin" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
                             </p>
                             {isLoading && (
                                 <div className="loader flex-items-center z-10">
-                                <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
-                                <span className="text-white">Loading...</span>
+                                    <FontAwesomeIcon icon={faSpinner} spin className="text-white mr-2" />
+                                    <span className="text-white">Loading...</span>
                                 </div>
-                             )}
+                            )}
                         </form>
                     </div>
                 </div>

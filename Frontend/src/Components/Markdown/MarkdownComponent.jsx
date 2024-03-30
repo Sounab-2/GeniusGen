@@ -28,7 +28,10 @@ const MarkdownViewer = () => {
   };
   if (!text.trim()) {
     return (
-      <div className="h-full  min-h-80 w-full flex justify-center items-center font-extrabold text-white">How can I help you today?</div>
+      <div className="h-full  min-h-80 w-full flex justify-center items-center font-extrabold text-white flex-col gap-3">
+        <span> <img src="/images/bulb.png" alt="bulb" className=' md:w-32 md:h-32 w-24 h-24' /></span>
+        <span className=' md:text-2xl text-xl'>How can I help you today ?</span>
+        </div>
     );
   }
   
