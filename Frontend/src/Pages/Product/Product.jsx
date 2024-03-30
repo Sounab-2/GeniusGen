@@ -81,7 +81,7 @@ const Product = () => {
               </ul>
             </div>
           </aside>
-          <div className={`flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 h-auto min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit w-full relative ${isLoading ? 'h-96' : ''}`}>
+          <div className={`flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit w-full relative ${isLoading ? 'h-96' : ' h-auto'}`}>
             {isLoading && (
               <div className="loader absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-slate-900 flex-col gap-2">
                 <img src="/images/loader.gif" alt="loadergif" />
