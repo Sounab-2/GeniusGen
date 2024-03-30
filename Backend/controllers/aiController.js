@@ -1,6 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
 const { createHistory } = require('./historyController'); // Correct import path
-const { getPrompt } = require('./quizcontroller');
 const {search} = require('./Gemini');
 
 const searchTopic = async (req, res) => {
@@ -19,6 +18,5 @@ const searchTopic = async (req, res) => {
 
 module.exports = {
     searchTopic,
-    getPrompt,
     search
 };
