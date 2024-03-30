@@ -7,7 +7,7 @@ import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import History from '../Historybox/History';
 import { useSelector } from 'react-redux';
 
-const SearchBox = () => {
+const SearchBox = ({histories}) => {
     const [textInput, setTextInput] = useState('');
     const [isHistoryOpen, setHistoryOpen] = useState(false);
     const activeHistory = useSelector(state => state.activeHistory);
@@ -58,7 +58,7 @@ const SearchBox = () => {
             </span>
             {/* History box */}
             <div className={`lg:hidden ${isHistoryOpen ? 'block' : 'hidden'}`}>
-                <History />
+            {histories.length > 0 && <History histories={histories} />}
             </div>
         </div>
     );
