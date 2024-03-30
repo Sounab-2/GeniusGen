@@ -101,7 +101,7 @@ const Quiz = () => {
                 {!showResult ? (
                     <div className="w-96 md:w-2/3 bg-gray-900 rounded-lg mt-20 px-6 py-12">
                         <img
-                            src="./src/assets/shape-4.png"
+                            src="/images/shape-4.png"
                             alt="Background"
                             className="absolute right-0 h-2/3 w-64 rotate-180 hidden md:block"
                         />
