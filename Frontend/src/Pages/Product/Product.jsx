@@ -11,6 +11,7 @@ import {  faArrowUpRightFromSquare, faRedoAlt } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateText, regenerateText } from '../../../actions/authActions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {toast} from 'react-toastify'
 
 const Product = () => {
   const user = useSelector(state => state.user);
@@ -36,7 +37,8 @@ const Product = () => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get('/api/v1/history/getAllHistory');
-        setHistories(response.data.histories); // Set histories state after fetching data
+        setHistories(response.data.histories); 
+        toast.success('History deleted successfully');
       } catch (error) {
         console.log(error);
       } finally {
