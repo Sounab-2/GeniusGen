@@ -9,20 +9,20 @@ import { setUser } from '../features/userSlice';
 function Layout() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get('/api/v1/users/showMe');
-        const user = response.data.user;
-        dispatch(setUser(user));
-      } catch (error) {
-        console.log('Error fetching user data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axiosInstance.get('/api/v1/users/showMe');
+  //       const user = response.data.user;
+  //       dispatch(setUser(user));
+  //     } catch (error) {
+  //       console.log('Error fetching user data:', error);
+  //     }
+  //   };
 
-    fetchData(); 
+  //   fetchData(); 
 
-  }, []); 
+  // }, []); 
 
   return (
     <>
