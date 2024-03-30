@@ -76,7 +76,7 @@ const getQuiz = async (req, res) => {
             if (!history) {
                 throw new customError.NotFoundError('History not found');
             }
-            
+
             const text = await setQuiz(history.title);
 
         // Parse string to JavaScript object array
@@ -92,7 +92,6 @@ const getQuiz = async (req, res) => {
 
 
 module.exports = {
-    getPrompt,
     getQuiz
 }
 
