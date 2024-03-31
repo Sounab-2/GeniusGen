@@ -97,3 +97,18 @@ export const regenerateText = (histId) => async (dispatch) => {
   }
 };
 
+
+
+export const knowMore = (histId) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const response = await axiosInstance.get(`/api/v1/quiz/link/${histId}`);
+    const link = response.data.link.response.candidates[0].content.parts[0].text;
+    window.open(link, '_blank');
+  } catch (error) {
+    console.log(error);
+  } finally {
+    dispatch(setLoading(false)); 
+  }
+};
+

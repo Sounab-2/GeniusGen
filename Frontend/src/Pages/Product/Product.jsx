@@ -9,7 +9,7 @@ import { setLoading, setUser, setQuiz } from '../../../features/userSlice';
 import Header from '../../Components/Header/Header';
 import {  faArrowUpRightFromSquare, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { generateText, regenerateText } from '../../../actions/authActions';
+import { generateText, regenerateText , knowMore} from '../../../actions/authActions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
@@ -58,6 +58,15 @@ const Product = () => {
   }
 
 
+  const handleLink = async (e) => {
+    e.preventDefault();
+    try {
+      await dispatch(knowMore(histId));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
   // Render the History component only when histories array is not empty
@@ -103,13 +112,13 @@ const Product = () => {
         { text!='' ? (
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
-            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenarate' >
+            <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenerate' >
 
               <FontAwesomeIcon icon={faRedoAlt} />
               
             </button>
 
-            <button className='hover: bg-lime-400  border-lime-600 rounded-md p-2 text-white text-xl w-10' title='Know More'>
+            <button className='hover: bg-lime-400  border-lime-600 rounded-md p-2 text-white text-xl w-10' title='Know More' onClick={(e) => handleLink(e)}>
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </button>
           </div>
