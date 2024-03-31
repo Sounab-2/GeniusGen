@@ -17,13 +17,13 @@ const Card = () => {
     {/* </div> */}
 </div>
     {/* <h2 class="text-2xl font-bold mb-2 text-gray-100">Dark Card</h2> */}
-    <div class="bg-gray-transparent p-8">
+    <div class="bg-gray-transparent p-6">
     <h2 class="md:text-3xl sm:text-3xl text-2xl font-bold mb-4 text-yellow-500">About GeniusGen</h2>
-    <p class="sm:text-lg md:text-lg text-lg text-white leading-relaxed ">
+    <p class="sm:text-lg md:text-lg text-base text-white leading-relaxed ">
         Welcome to GeniusGen, your ultimate destination for intellectual growth and fun learning! 
         Our mission is to empower minds through a fusion of enlightening blog content and captivating quizzes.
     </p>
-    <p class="md:text-lg text-lg text-white leading-relaxed mt-4 text-left md:w-1/2 sm:text-sm sm:w-72">
+    <p class="md:text-lg text-base text-white leading-relaxed mt-4 text-left md:w-1/2 sm:text-sm sm:w-72">
         At GeniusGen, we believe that knowledge is the ultimate superpower, and we're here to equip 
         you with the tools you need to unlock your full potential. Immerse yourself in our curated 
         blog posts, crafted by AI to spark curiosity and inspire discovery. Then, put your intellect 

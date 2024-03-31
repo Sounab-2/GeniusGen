@@ -36,17 +36,17 @@ export default function Footer() {
                             <ul className="text-white font-medium">
                                 <li className="mb-4">
                                     <Link
-                                        to="#"
+                                        to="https://github.com/SnikSouShreya"
                                         className="hover:underline"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Instagram
+                                        Github
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="#" className="hover:underline">
-                                        Facebook
+                                    <Link to="https://www.linkedin.com/in/snikdhendu-pramanik/" className="hover:underline">
+                                        Linkedin
                                     </Link>
                                 </li>
                             </ul>

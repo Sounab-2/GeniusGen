@@ -33,7 +33,7 @@ const Home = () => {
           alt="Background"
           className="absolute right-0 h-1/3  rotate-180"
         />
-      < div className='absolute md:right-36 sm:right-36 right-4 top-96 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0 justify-center items-center flex h-60 w-11/12 '>
+      < div className='absolute md:right-36 sm:right-36 right-4 top-80 mt-40 md:top-44 md:h-80 md:w-1/3 border-4 rounded-lg sm:top-96 sm:mt-20 sm:h-60 sm:w-2/3 md:mt-0 justify-center items-center flex h-60 w-11/12 '>
         {/* YouTube video */}
         
           <YouTube videoId={videoId} opts={opts} className='absolute top-0 left-0 w-full h-full' />
