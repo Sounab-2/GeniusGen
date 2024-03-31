@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const videoId = 'jRhqx1_KcCk';
+  const videoId = 'QCJET0iawEs';
 
   // Options for the YouTube player
   const opts = {
