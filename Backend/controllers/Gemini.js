@@ -89,5 +89,19 @@ const setQuiz = async (topic)=> {
     }
 }
 
+const setLink = async (topic) => {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+    const modifiedPrompt = `Search the ${topic} on Internet and provide the best resource link found for this ${topic}. The link should be a direct link to that resource page.Only give the link nothing else should be specified.`;
+    
 
-module.exports = {search,setQuiz};
+    const result = await model.generateContent(modifiedPrompt);
+    // let text = '';
+    // for await (const chunk of result.stream) {
+    //     const chunkText = chunk.text();
+    //     text += chunkText;
+    // }
+
+    return result;
+};
+
+module.exports = {search,setQuiz,setLink};

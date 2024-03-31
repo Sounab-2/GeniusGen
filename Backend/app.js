@@ -21,19 +21,19 @@ const aiRouter =  require('./routes/aiRoute');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
-app.use(cors({
-    origin: 'http://localhost:5173',
-    // origin: 'https://educational-content-generator.vercel.app',
-    credentials: true
-}));
-// Handle preflight requests for all routes
-app.options('*', cors());
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     // origin: 'https://educational-content-generator.vercel.app',
+//     credentials: true
+// }));
+// // Handle preflight requests for all routes
+// app.options('*', cors());
 
 // Custom middleware to ensure 'Access-Control-Allow-Credentials' header is set
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
 
 // Add your routes and other middleware here...
 

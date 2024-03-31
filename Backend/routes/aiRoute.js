@@ -7,10 +7,11 @@ const {
 } = require('../controllers/aiController');
 
 const {
-        getQuiz
+        getQuiz, getLink
 }=require('../controllers/quizcontroller');
 
 router.post('/',authenticateUser,searchTopic);
-router.get('/:id',authenticateUser,getQuiz)
+router.get('/:id',authenticateUser,getQuiz);
+router.get('/link/:id',authenticateUser,getLink);
 
 module.exports = router;
