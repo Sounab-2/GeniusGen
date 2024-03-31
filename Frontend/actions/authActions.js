@@ -91,7 +91,6 @@ export const regenerateText = (histId) => async (dispatch) => {
     const response = await axiosInstance.post(`/api/v1/history/regenerate/${histId}`);
     dispatch(setGeneratedText(response.data.text));
     // console.log(response.data.text);
-    toast.success('Response regenerated successfully')
   } catch (error) {
     console.log(error);
   } finally {

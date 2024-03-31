@@ -11,6 +11,7 @@ import {  faArrowUpRightFromSquare, faRedoAlt } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateText, regenerateText , knowMore} from '../../../actions/authActions';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const user = useSelector(state => state.user);
@@ -52,6 +53,7 @@ const Product = () => {
     try {
       // console.log(histId);
       await dispatch(regenerateText(histId));
+      toast.success('Response regenerated successfully')
     } catch (error) {
       console.log(error);
     }
