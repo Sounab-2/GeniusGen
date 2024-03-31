@@ -109,7 +109,7 @@ const Product = () => {
 
 
         </div>
-        { text!='' ? (
+        {isLoading && text!='' ? (
         <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
             <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenerate' >
