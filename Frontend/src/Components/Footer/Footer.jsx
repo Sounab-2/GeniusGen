@@ -36,7 +36,7 @@ export default function Footer() {
                             <ul className="text-white font-medium">
                                 <li className="mb-4">
                                     <Link
-                                        to="https://github.com/SnikSouShreya"
+                                        to="https://github.com/DevTitans-S3"
                                         className="hover:underline"
                                         target="_blank"
                                         rel="noreferrer"
