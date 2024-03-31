@@ -95,12 +95,7 @@ const setLink = async (topic) => {
     
 
     const result = await model.generateContent(modifiedPrompt);
-    // let text = '';
-    // for await (const chunk of result.stream) {
-    //     const chunkText = chunk.text();
-    //     text += chunkText;
-    // }
-
+  
     return result;
 };
 
