@@ -1,4 +1,4 @@
-import { setLoading, setUser, logout, setGeneratedText,setQuiz,setActiveHistory } from '../features/userSlice';
+import { setLoading, setUser, logout, setGeneratedText,setQuiz,setActiveHistory,setHistoryId } from '../features/userSlice';
 import { axiosInstance } from '../utils/index';
 import {toast} from 'react-toastify'
 
@@ -60,6 +60,7 @@ export const generateText = (textInput,activeHistory) => async (dispatch) => {
     }else{
       dispatch(setGeneratedText(response.data.text));
       activeSelect(histId);
+      dispatch(setHistoryId(histId));
     }
     // console.log(response.data.text);
   } catch (error) {
