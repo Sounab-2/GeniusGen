@@ -85,8 +85,8 @@ const Product = () => {
       </div>
       <div className=" bg-black min-h-screen  p-4 relative flex flex-col  ">
         <div className=' flex gap-2 justify-center items-center'>
-          <aside id="logo-sidebar" class="fixed  top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-black dark:border-gray-700 mt-16" aria-label="Sidebar">
-            <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-black">
+          <aside id="logo-sidebar" class="fixed  top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full  border-r  sm:translate-x-0 bg-black border-gray-700 mt-16" aria-label="Sidebar">
+            <div class="h-full px-3 pb-4 overflow-y-auto bg-black">
             <ul className="space-y-2 font-medium">
                     {histories.length === 0 ? (
                   <div className="text-white min-h-96 flex justify-center items-center">No history available</div>
@@ -96,7 +96,7 @@ const Product = () => {
               </ul>
             </div>
           </aside>
-          <div className={`flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 min-h-96 mb-4 rounded bg-gray-50 dark:bg-gray-800 mt-32 md:min-w-fit w-full relative ${isLoading ? 'h-96' : 'h-auto'}`}>
+          <div className={`flex md:text-2xl text-sm font-bold md:p-12 p-6 text-white flex-col gap-6 min-h-96 mb-4 rounded  bg-gray-800 mt-32 md:min-w-fit w-full relative ${isLoading ? 'h-96' : 'h-auto'}`}>
             {isLoading && (
               <div className="loader absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10 bg-slate-900 flex-col gap-2">
                 <img src="/images/loader.gif" alt="loadergif" />
@@ -112,7 +112,7 @@ const Product = () => {
 
         </div>
         {text!='' ? (
-        <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
+        <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-800 pr-3 flex-col md:flex-row ">
           <div className=' h-auto w-44 ce flex items-center justify-between p-8 gap-4'>
             <button className=' hover: bg-lime-400  border-lime-600 rounded-md p-2 w-10 text-white text-xl' onClick={(e) => handleClick(e)} title='Regenerate' >
 
@@ -128,7 +128,7 @@ const Product = () => {
             <Link to="/quiz" className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center  w-64 h-12 relative z-40">Test your knowledge with a Quiz</Link>
           </div>
         </div>):(
-          <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-50 dark:bg-gray-800 pr-3 flex-col md:flex-row ">
+          <div class="flex items-center justify-between h-44 md:h-16 mb-4 rounded bg-gray-800 pr-3 flex-col md:flex-row ">
 
           </div>
           
