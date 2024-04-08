@@ -19,7 +19,7 @@ import Product from './Pages/Product/Product.jsx';
 import Explore from './Pages/Explore/Explore.jsx';
 import Error from './Pages/Error/Error.jsx';
 import Quiz from './Pages/Quiz/Quiz.jsx';
-import Error from './Pages/Error/Error.jsx';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
