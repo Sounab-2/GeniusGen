@@ -23,7 +23,7 @@ const safetySettings = [
 ];
 
 const search = async (topic) => {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro", safetySettings });
     const modifiedPrompt = `Check if the given ${topic} is directly related to programming or computer science but don't write it is related to programming or computer science in the response.
         If the ${topic} is not directly related to programming or computer science, provide null.
         Otherwise, generate an educational piece on ${topic} in programming/computer science.
