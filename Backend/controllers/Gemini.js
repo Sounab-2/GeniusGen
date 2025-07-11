@@ -23,7 +23,7 @@ const safetySettings = [
 ];
 
 const search = async (topic) => {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro", safetySettings });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", safetySettings });
     const modifiedPrompt = `Check if the given ${topic} is directly related to programming or computer science but don't write it is related to programming or computer science in the response.
         If the ${topic} is not directly related to programming or computer science, provide null.
         Otherwise, generate an educational piece on ${topic} in programming/computer science.
@@ -47,7 +47,7 @@ const search = async (topic) => {
 
 const setQuiz = async (topic)=> {
     try{    
-        const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro", safetySettings });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", safetySettings });
         const modifiedPrompt = `Generate 10 multiple-choice questions (MCQs) on ${topic}
         Ensure that all property names are enclosed in double quotation marks.
         Make sure that each key-value pair is separated by a comma.
@@ -90,7 +90,7 @@ const setQuiz = async (topic)=> {
 }
 
 const setLink = async (topic) => {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro", safetySettings });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", safetySettings });
     const modifiedPrompt = `Search the ${topic} on Internet and provide the best resource link found for this ${topic}. The link should be a direct link to that resource page.Only give the link nothing else should be specified.`;
     
 
